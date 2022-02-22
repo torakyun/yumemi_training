@@ -1,24 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="YumemiTraining" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-OE-Kp7">
+                                <rect key="frame" x="103.5" y="329" width="207" height="248"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iLo-YF-PhL">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="iLo-YF-PhL" secondAttribute="height" id="L25-eD-8nu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DS6-Iu-KSd">
+                                        <rect key="frame" x="0.0" y="207" width="207" height="41"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo2-9X-vtS">
+                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <color key="textColor" name="Blue"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6t-gW-YGY">
+                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <color key="textColor" name="Red"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Bo2-9X-vtS" firstAttribute="width" secondItem="DS6-Iu-KSd" secondAttribute="width" multiplier="0.5" id="4hk-gD-k9y"/>
+                                            <constraint firstItem="Bo2-9X-vtS" firstAttribute="height" secondItem="DS6-Iu-KSd" secondAttribute="height" id="A0I-zo-cfM"/>
+                                            <constraint firstItem="j6t-gW-YGY" firstAttribute="width" secondItem="DS6-Iu-KSd" secondAttribute="width" multiplier="0.5" id="AfM-C0-XFK"/>
+                                            <constraint firstItem="j6t-gW-YGY" firstAttribute="height" secondItem="DS6-Iu-KSd" secondAttribute="height" id="yXN-S0-g7A"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="DS6-Iu-KSd" firstAttribute="width" secondItem="iLo-YF-PhL" secondAttribute="width" id="997-2D-caL"/>
+                                    <constraint firstItem="DS6-Iu-KSd" firstAttribute="height" secondItem="iLo-YF-PhL" secondAttribute="height" multiplier="0.2" id="blf-Gk-PWT"/>
+                                    <constraint firstItem="DS6-Iu-KSd" firstAttribute="top" secondItem="iLo-YF-PhL" secondAttribute="bottom" id="zgc-PI-Tjo"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-tk-LZg">
+                                <rect key="frame" x="103.5" y="657" width="207" height="32"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EG8-b7-jVg">
+                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="32"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Close">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nox-y5-K0O">
+                                        <rect key="frame" x="103.5" y="0.0" width="103.5" height="32"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Reload">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="EG8-b7-jVg" firstAttribute="width" secondItem="CcG-tk-LZg" secondAttribute="width" multiplier="0.5" id="0pV-2C-GGC"/>
+                                    <constraint firstItem="Nox-y5-K0O" firstAttribute="width" secondItem="CcG-tk-LZg" secondAttribute="width" multiplier="0.5" id="rJO-ez-wjz"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CcG-tk-LZg" firstAttribute="width" secondItem="TO7-OE-Kp7" secondAttribute="width" id="CSp-Ia-iMh"/>
+                            <constraint firstItem="TO7-OE-Kp7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="V2i-74-ZEL"/>
+                            <constraint firstItem="CcG-tk-LZg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bLA-fp-a9k"/>
+                            <constraint firstItem="CcG-tk-LZg" firstAttribute="top" secondItem="TO7-OE-Kp7" secondAttribute="bottom" constant="80" id="c8q-mj-vTB"/>
+                            <constraint firstItem="TO7-OE-Kp7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="h08-Cs-jEi"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="84.375"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="Blue">
+            <color red="0.20499999821186066" green="0.53700000047683716" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Red">
+            <color red="1" green="0.210999995470047" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
