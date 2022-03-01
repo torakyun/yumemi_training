@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-OE-Kp7">
-                                <rect key="frame" x="103.5" y="329" width="207" height="248"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-OE-Kp7" userLabel="MainStackView">
+                                <rect key="frame" x="103.5" y="344.5" width="207" height="217"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iLo-YF-PhL">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
@@ -26,17 +26,17 @@
                                             <constraint firstAttribute="width" secondItem="iLo-YF-PhL" secondAttribute="height" id="L25-eD-8nu"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DS6-Iu-KSd">
-                                        <rect key="frame" x="0.0" y="207" width="207" height="41"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DS6-Iu-KSd" userLabel="LabelStackView">
+                                        <rect key="frame" x="0.0" y="207" width="207" height="10"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo2-9X-vtS">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="41"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="10"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                                 <color key="textColor" name="Blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6t-gW-YGY">
-                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="41"/>
+                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="10"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                                 <color key="textColor" name="Red"/>
                                                 <nil key="highlightedColor"/>
@@ -44,13 +44,9 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="DS6-Iu-KSd" firstAttribute="width" secondItem="iLo-YF-PhL" secondAttribute="width" id="997-2D-caL"/>
-                                    <constraint firstItem="DS6-Iu-KSd" firstAttribute="height" secondItem="iLo-YF-PhL" secondAttribute="height" multiplier="0.2" id="blf-Gk-PWT"/>
-                                </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-tk-LZg">
-                                <rect key="frame" x="103.5" y="657" width="207" height="32"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-tk-LZg" userLabel="ButtonStackView">
+                                <rect key="frame" x="103.5" y="641.5" width="207" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EG8-b7-jVg">
                                         <rect key="frame" x="0.0" y="0.0" width="103.5" height="32"/>
@@ -73,6 +69,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CcG-tk-LZg" firstAttribute="width" secondItem="TO7-OE-Kp7" secondAttribute="width" id="CSp-Ia-iMh"/>
+                            <constraint firstItem="TO7-OE-Kp7" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="Hby-Pz-M4P"/>
                             <constraint firstItem="TO7-OE-Kp7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="V2i-74-ZEL"/>
                             <constraint firstItem="CcG-tk-LZg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bLA-fp-a9k"/>
                             <constraint firstItem="CcG-tk-LZg" firstAttribute="top" secondItem="TO7-OE-Kp7" secondAttribute="bottom" constant="80" id="c8q-mj-vTB"/>
