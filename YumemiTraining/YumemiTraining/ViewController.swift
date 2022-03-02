@@ -46,16 +46,17 @@ final class ViewController: UIViewController {
         
         let weather = YumemiWeather.fetchWeather()
         
-        if weather == "sunny" {
+        switch weather {
+        case "sunny":
             weatherImage = UIImage(named: "sunny")
             weatherImageColor = .red
-        } else if weather == "cloudy" {
+        case "cloudy":
             weatherImage = UIImage(named: "cloudy")
             weatherImageColor = .gray
-        } else if weather == "rainy" {
+        case "rainy":
             weatherImage = UIImage(named: "rainy")
             weatherImageColor = .blue
-        } else {
+        default:
             weatherImage = nil
             weatherImageColor = nil
         }
