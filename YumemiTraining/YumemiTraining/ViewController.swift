@@ -11,7 +11,9 @@ import YumemiWeather
 final class ViewController: UIViewController {
     
     @IBOutlet private weak var weatherImageView: UIImageView!
-
+    @IBOutlet private weak var minTempLabel: UILabel!
+    @IBOutlet private weak var maxTempLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadWeather()
@@ -24,11 +26,29 @@ final class ViewController: UIViewController {
     private func loadWeather() {
         
         do {
+            // 天気予報に必要なパラメータをJSON文字列で保持
+            var jsonObj = Dictionary<String, Any>()
+            jsonObj["area"] = "tokyo"
+            jsonObj["date"] = "2020-04-01T12:00:00+09:00"
             
-            let weather = try YumemiWeather.fetchWeather(at: "tokyo")
+            let jsonData = try JSONSerialization.data(withJSONObject: jsonObj, options: [])
+            let jsonStr = String(bytes: jsonData, encoding: .utf8)!
+            
+            // 天気予報をAPIから取得
+            let weatherJsonStr = try YumemiWeather.fetchWeather(jsonStr)
+            let weatherData: Data =  weatherJsonStr.data(using: String.Encoding.utf8)!
+            let weatherJsonObj = try JSONSerialization.jsonObject(with: weatherData) as! Dictionary<String, Any>
+            
+            // 天気の画像を設定
+            let weather = weatherJsonObj["weather"] as! String
             let weatherImageResource = self.weatherImageResource(weather)
             self.weatherImageView.image = weatherImageResource.image
             self.weatherImageView.tintColor = weatherImageResource.color
+            
+            //最高気温と最低気温を設定
+            print(weatherJsonObj["max_temp"] as! Int)
+            self.minTempLabel.text = String(weatherJsonObj["max_temp"] as! Int)
+            self.maxTempLabel.text = String(weatherJsonObj["min_temp"] as! Int)
             
         } catch YumemiWeatherError.invalidParameterError {
             

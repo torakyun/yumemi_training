@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-OE-Kp7" userLabel="MainStackView">
-                                <rect key="frame" x="103.5" y="344.5" width="207" height="217"/>
+                                <rect key="frame" x="103.5" y="331.5" width="207" height="243"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iLo-YF-PhL">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
@@ -27,17 +27,17 @@
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DS6-Iu-KSd" userLabel="LabelStackView">
-                                        <rect key="frame" x="0.0" y="207" width="207" height="10"/>
+                                        <rect key="frame" x="0.0" y="207" width="207" height="36"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo2-9X-vtS">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="10"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="textColor" name="Blue"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6t-gW-YGY">
-                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="10"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="textColor" name="Red"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -46,7 +46,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-tk-LZg" userLabel="ButtonStackView">
-                                <rect key="frame" x="103.5" y="641.5" width="207" height="32"/>
+                                <rect key="frame" x="103.5" y="654.5" width="207" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EG8-b7-jVg">
                                         <rect key="frame" x="0.0" y="0.0" width="103.5" height="32"/>
@@ -80,6 +80,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="maxTempLabel" destination="j6t-gW-YGY" id="1ko-6z-XfL"/>
+                        <outlet property="minTempLabel" destination="Bo2-9X-vtS" id="4Uw-fl-jjM"/>
                         <outlet property="weatherImageView" destination="iLo-YF-PhL" id="WmI-jY-TvN"/>
                     </connections>
                 </viewController>
