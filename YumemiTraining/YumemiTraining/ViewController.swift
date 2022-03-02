@@ -19,7 +19,7 @@ final class ViewController: UIViewController {
         self.changeWeatherImage()
     }
 
-    @IBAction func reloadButtonDidPress(_ sender: Any) {
+    @IBAction private func reloadButtonDidPress(_ sender: Any) {
         self.changeWeatherImage()
     }
     
