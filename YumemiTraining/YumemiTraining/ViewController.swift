@@ -42,9 +42,10 @@ class ViewController: UIViewController {
     
     private func fetchWeather() -> (image: UIImage?, color: UIColor?) {
         
-        let weather = YumemiWeather.fetchWeather()
         var weatherImage: UIImage?
         var weatherImageColor: UIColor?
+        
+        let weather = YumemiWeather.fetchWeather()
         
         if weather == "sunny" {
             weahterImage = UIImage(named: "sunny")
