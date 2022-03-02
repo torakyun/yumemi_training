@@ -11,8 +11,8 @@ import YumemiWeather
 final class ViewController: UIViewController {
     
     @IBOutlet private weak var weatherImageView: UIImageView!
-    @IBOutlet private weak var minTempLabel: UILabel!
     @IBOutlet private weak var maxTempLabel: UILabel!
+    @IBOutlet private weak var minTempLabel: UILabel!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -46,9 +46,8 @@ final class ViewController: UIViewController {
             self.weatherImageView.tintColor = weatherImageResource.color
             
             //最高気温と最低気温を設定
-            print(weatherJsonObj["max_temp"] as! Int)
-            self.minTempLabel.text = String(weatherJsonObj["max_temp"] as! Int)
-            self.maxTempLabel.text = String(weatherJsonObj["min_temp"] as! Int)
+            self.maxTempLabel.text = String(weatherJsonObj["max_temp"] as! Int)
+            self.minTempLabel.text = String(weatherJsonObj["min_temp"] as! Int)
             
         } catch YumemiWeatherError.invalidParameterError {
             self.showErrorAlert(title: "天気情報の取得に失敗", message: "invalidParameterError")
