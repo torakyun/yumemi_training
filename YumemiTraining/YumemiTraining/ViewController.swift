@@ -6,14 +6,43 @@
 //
 
 import UIKit
+import YumemiWeather
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+    
+    @IBOutlet private weak var weatherImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.loadWeather()
     }
 
-
+    @IBAction private func reloadButtonDidPress(_ sender: Any) {
+        self.loadWeather()
+    }
+    
+    private func loadWeather() {
+        
+        let weather = YumemiWeather.fetchWeather()
+        let weatherImageResource = self.weatherImageResource(weather)
+        self.weatherImageView.image = weatherImageResource.image
+        self.weatherImageView.tintColor = weatherImageResource.color
+        
+    }
+    
+    private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
+        
+        switch weather {
+        case "sunny":
+            return (UIImage(named: "sunny"), .red)
+        case "cloudy":
+            return (UIImage(named: "cloudy"), .gray)
+        case "rainy":
+            return (UIImage(named: "rainy"), .blue)
+        default:
+            return (nil, nil)
+        }
+        
+    }
 }
 
