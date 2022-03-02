@@ -11,8 +11,8 @@ import YumemiWeather
 class ViewController: UIViewController {
     
     @IBOutlet private weak var weatherImageView: UIImageView!
-    private var weahterImage: UIImage?
-    private var weahterImageColor: UIColor?
+    private var weatherImage: UIImage?
+    private var weatherImageColor: UIColor?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +28,15 @@ class ViewController: UIViewController {
         
         let weatherImageData = self.fetchWeather()
         
-        if let weahterImage = weatherImageData.image {
-            self.weahterImage = weahterImage
+        if let weatherImage = weatherImageData.image {
+            self.weatherImage = weatherImage
         }
-        self.weatherImageView.image = self.weahterImage
+        self.weatherImageView.image = self.weatherImage
         
         if let weahterImageColor = weatherImageData.color {
-            self.weahterImageColor = weahterImageColor
+            self.weatherImageColor = weahterImageColor
         }
-        self.weatherImageView.tintColor = self.weahterImageColor
+        self.weatherImageView.tintColor = self.weatherImageColor
         
     }
     
@@ -48,13 +48,13 @@ class ViewController: UIViewController {
         let weather = YumemiWeather.fetchWeather()
         
         if weather == "sunny" {
-            weahterImage = UIImage(named: "sunny")
+            weatherImage = UIImage(named: "sunny")
             weatherImageColor = .red
         } else if weather == "cloudy" {
-            weahterImage = UIImage(named: "cloudy")
+            weatherImage = UIImage(named: "cloudy")
             weatherImageColor = .gray
         } else if weather == "rainy" {
-            weahterImage = UIImage(named: "rainy")
+            weatherImage = UIImage(named: "rainy")
             weatherImageColor = .blue
         } else {
             weatherImage = nil
