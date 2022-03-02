@@ -12,8 +12,8 @@ final class ViewController: UIViewController {
     
     @IBOutlet private weak var weatherImageView: UIImageView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.loadWeather()
     }
 
@@ -23,10 +23,20 @@ final class ViewController: UIViewController {
     
     private func loadWeather() {
         
-        let weather = YumemiWeather.fetchWeather()
-        let weatherImageResource = self.weatherImageResource(weather)
-        self.weatherImageView.image = weatherImageResource.image
-        self.weatherImageView.tintColor = weatherImageResource.color
+        do {
+            
+            let weather = try YumemiWeather.fetchWeather(at: "tokyo")
+            let weatherImageResource = self.weatherImageResource(weather)
+            self.weatherImageView.image = weatherImageResource.image
+            self.weatherImageView.tintColor = weatherImageResource.color
+            
+        } catch YumemiWeatherError.invalidParameterError {
+            self.showErrorAlert(title: "天気情報の取得に失敗", message: "invalidParameterError")
+        } catch YumemiWeatherError.unknownError {
+            self.showErrorAlert(title: "天気情報の取得に失敗", message: "unknownError")
+        } catch {
+            print(error)
+        }
         
     }
     
@@ -43,6 +53,13 @@ final class ViewController: UIViewController {
             return (nil, nil)
         }
         
+    }
+    
+    private func showErrorAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
     }
 }
 
