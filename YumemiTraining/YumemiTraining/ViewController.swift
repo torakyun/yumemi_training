@@ -59,7 +59,7 @@ final class ViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
         alert.addAction(cancelAction)
-        present(alert, animated: true)
+        self.present(alert, animated: true)
     }
 }
 
