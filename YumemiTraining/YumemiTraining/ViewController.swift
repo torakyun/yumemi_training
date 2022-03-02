@@ -32,25 +32,16 @@ final class ViewController: UIViewController {
     
     private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
         
-        var weatherImage: UIImage?
-        var weatherImageColor: UIColor?
-        
         switch weather {
         case "sunny":
-            weatherImage = UIImage(named: "sunny")
-            weatherImageColor = .red
+            return (UIImage(named: "sunny"), .red)
         case "cloudy":
-            weatherImage = UIImage(named: "cloudy")
-            weatherImageColor = .gray
+            return (UIImage(named: "cloudy"), .gray)
         case "rainy":
-            weatherImage = UIImage(named: "rainy")
-            weatherImageColor = .blue
+            return (UIImage(named: "rainy"), .blue)
         default:
-            weatherImage = nil
-            weatherImageColor = nil
+            return (nil, nil)
         }
-        
-        return (weatherImage, weatherImageColor)
         
     }
 }
