@@ -31,19 +31,9 @@ final class ViewController: UIViewController {
             self.weatherImageView.tintColor = weatherImageResource.color
             
         } catch YumemiWeatherError.invalidParameterError {
-            
-            let alert = UIAlertController(title: "天気情報の取得に失敗", message: "invalidParameterError", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
-            
+            self.showErrorAlert(title: "天気情報の取得に失敗", message: "invalidParameterError")
         } catch YumemiWeatherError.unknownError {
-            
-            let alert = UIAlertController(title: "天気情報の取得に失敗", message: "unknownError", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
-            
+            self.showErrorAlert(title: "天気情報の取得に失敗", message: "unknownError")
         } catch let error {
             print(error)
         }
@@ -63,6 +53,13 @@ final class ViewController: UIViewController {
             return (nil, nil)
         }
         
+    }
+    
+    private func showErrorAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
 }
 
