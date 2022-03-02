@@ -34,7 +34,7 @@ final class ViewController: UIViewController {
             self.showErrorAlert(title: "天気情報の取得に失敗", message: "invalidParameterError")
         } catch YumemiWeatherError.unknownError {
             self.showErrorAlert(title: "天気情報の取得に失敗", message: "unknownError")
-        } catch let error {
+        } catch {
             print(error)
         }
         
