@@ -14,33 +14,26 @@ final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.changeWeatherImage()
+        self.loadWeather()
     }
 
     @IBAction private func reloadButtonDidPress(_ sender: Any) {
-        self.changeWeatherImage()
+        self.loadWeather()
     }
     
-    private func changeWeatherImage() {
+    private func loadWeather() {
         
-        let weatherImageData = self.fetchWeather()
-        
-        if let weatherImage = weatherImageData.image {
-            self.weatherImageView.image = weatherImage
-        }
-        
-        if let weahterImageColor = weatherImageData.color {
-            self.weatherImageView.tintColor = weahterImageColor
-        }
+        let weather = YumemiWeather.fetchWeather()
+        let weatherImageResource = self.weatherImageResource(weather)
+        self.weatherImageView.image = weatherImageResource.image
+        self.weatherImageView.tintColor = weatherImageResource.color
         
     }
     
-    private func fetchWeather() -> (image: UIImage?, color: UIColor?) {
+    private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
         
         var weatherImage: UIImage?
         var weatherImageColor: UIColor?
-        
-        let weather = YumemiWeather.fetchWeather()
         
         switch weather {
         case "sunny":
