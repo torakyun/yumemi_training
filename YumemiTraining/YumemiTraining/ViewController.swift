@@ -12,8 +12,8 @@ final class ViewController: UIViewController {
     
     @IBOutlet private weak var weatherImageView: UIImageView!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.loadWeather()
     }
 
