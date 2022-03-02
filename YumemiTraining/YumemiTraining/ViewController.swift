@@ -14,8 +14,8 @@ final class ViewController: UIViewController {
     @IBOutlet private weak var minTempLabel: UILabel!
     @IBOutlet private weak var maxTempLabel: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.loadWeather()
     }
 
@@ -51,20 +51,10 @@ final class ViewController: UIViewController {
             self.maxTempLabel.text = String(weatherJsonObj["min_temp"] as! Int)
             
         } catch YumemiWeatherError.invalidParameterError {
-            
-            let alert = UIAlertController(title: "天気情報の取得に失敗", message: "invalidParameterError", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
-            
+            self.showErrorAlert(title: "天気情報の取得に失敗", message: "invalidParameterError")
         } catch YumemiWeatherError.unknownError {
-            
-            let alert = UIAlertController(title: "天気情報の取得に失敗", message: "unknownError", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
-            alert.addAction(cancelAction)
-            present(alert, animated: true)
-            
-        } catch let error {
+            self.showErrorAlert(title: "天気情報の取得に失敗", message: "unknownError")
+        } catch {
             print(error)
         }
         
@@ -83,6 +73,13 @@ final class ViewController: UIViewController {
             return (nil, nil)
         }
         
+    }
+    
+    private func showErrorAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true)
     }
 }
 
