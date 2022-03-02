@@ -23,10 +23,30 @@ final class ViewController: UIViewController {
     
     private func loadWeather() {
         
-        let weather = YumemiWeather.fetchWeather()
-        let weatherImageResource = self.weatherImageResource(weather)
-        self.weatherImageView.image = weatherImageResource.image
-        self.weatherImageView.tintColor = weatherImageResource.color
+        do {
+            
+            let weather = try YumemiWeather.fetchWeather(at: "tokyo")
+            let weatherImageResource = self.weatherImageResource(weather)
+            self.weatherImageView.image = weatherImageResource.image
+            self.weatherImageView.tintColor = weatherImageResource.color
+            
+        } catch YumemiWeatherError.invalidParameterError {
+            
+            let alert = UIAlertController(title: "天気情報の取得に失敗", message: "invalidParameterError", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
+            
+        } catch YumemiWeatherError.unknownError {
+            
+            let alert = UIAlertController(title: "天気情報の取得に失敗", message: "unknownError", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
+            
+        } catch let error {
+            print(error)
+        }
         
     }
     
