@@ -39,7 +39,7 @@ final class ViewController: UIViewController {
             
             // 天気予報をAPIから取得
             let weatherJsonStr = try YumemiWeather.fetchWeather(jsonStr)
-            guard let weatherData: Data =  weatherJsonStr.data(using: String.Encoding.utf8) else {
+            guard let weatherData = weatherJsonStr.data(using: String.Encoding.utf8) else {
                 throw LoadWeatherError.encodeDataFailed
             }
             guard let weatherJsonObj = try JSONSerialization.jsonObject(with: weatherData) as? [String: Any] else {
