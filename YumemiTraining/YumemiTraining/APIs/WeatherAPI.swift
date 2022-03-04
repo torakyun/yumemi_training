@@ -8,11 +8,6 @@
 import Foundation
 import YumemiWeather
 
-enum FetchWeatherError: Error {
-    case encodeDataFailed
-    case decodeDataFailed
-}
-
 enum WeatherAPI {
     
     static func fetchWeather(_ weatherParameter: WeatherParameter) throws -> WeatherResult {
@@ -34,5 +29,12 @@ enum WeatherAPI {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         return try decoder.decode(WeatherResult.self, from: weatherResultData)
         
+    }
+}
+
+extension WeatherAPI {
+    enum FetchWeatherError: Error {
+        case encodeDataFailed
+        case decodeDataFailed
     }
 }
