@@ -11,7 +11,9 @@ import YumemiWeather
 final class ViewController: UIViewController {
     
     @IBOutlet private weak var weatherImageView: UIImageView!
-
+    @IBOutlet private weak var maxTempLabel: UILabel!
+    @IBOutlet private weak var minTempLabel: UILabel!
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.loadWeather()
@@ -24,11 +26,43 @@ final class ViewController: UIViewController {
     private func loadWeather() {
         
         do {
+            // 天気予報に必要なパラメータをJSON文字列で保持
+            let jsonObj: [String: Any] = [
+                "area": "tokyo",
+                "date": "2020-04-01T12:00:00+09:00"
+            ]
             
-            let weather = try YumemiWeather.fetchWeather(at: "tokyo")
+            let jsonData = try JSONSerialization.data(withJSONObject: jsonObj, options: [])
+            guard let jsonStr = String(data: jsonData, encoding: .utf8) else {
+                throw LoadWeatherError.decodeDataFailed
+            }
+            
+            // 天気予報をAPIから取得
+            let weatherJsonStr = try YumemiWeather.fetchWeather(jsonStr)
+            guard let weatherData = weatherJsonStr.data(using: String.Encoding.utf8) else {
+                throw LoadWeatherError.encodeDataFailed
+            }
+            guard let weatherJsonObj = try JSONSerialization.jsonObject(with: weatherData) as? [String: Any] else {
+                throw LoadWeatherError.castDictFailed
+            }
+            
+            // 天気の画像を設定
+            guard let weather = weatherJsonObj["weather"] as? String else {
+                throw LoadWeatherError.loadWeatherFailed
+            }
             let weatherImageResource = self.weatherImageResource(weather)
             self.weatherImageView.image = weatherImageResource.image
             self.weatherImageView.tintColor = weatherImageResource.color
+            
+            //最高気温と最低気温を設定
+            guard let maxTemp = weatherJsonObj["max_temp"] as? Int else {
+                throw LoadWeatherError.loadMaxTempFailed
+            }
+            guard let minTemp = weatherJsonObj["min_temp"] as? Int else {
+                throw LoadWeatherError.loadMinTempFailed
+            }
+            self.maxTempLabel.text = String(maxTemp)
+            self.minTempLabel.text = String(minTemp)
             
         } catch YumemiWeatherError.invalidParameterError {
             self.showErrorAlert(title: "天気情報の取得に失敗", message: "invalidParameterError")
@@ -60,6 +94,15 @@ final class ViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
+    }
+    
+    enum LoadWeatherError: Error {
+        case decodeDataFailed
+        case encodeDataFailed
+        case castDictFailed
+        case loadWeatherFailed
+        case loadMaxTempFailed
+        case loadMinTempFailed
     }
 }
 
