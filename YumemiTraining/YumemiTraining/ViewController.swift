@@ -48,7 +48,7 @@ final class ViewController: UIViewController {
             
             // 天気の画像を設定
             guard let weather = weatherJsonObj["weather"] as? String else {
-                throw LoadWeatherError.castStringFailed
+                throw LoadWeatherError.loadWeatherFailed
             }
             let weatherImageResource = self.weatherImageResource(weather)
             self.weatherImageView.image = weatherImageResource.image
@@ -56,10 +56,10 @@ final class ViewController: UIViewController {
             
             //最高気温と最低気温を設定
             guard let maxTemp = weatherJsonObj["max_temp"] as? Int else {
-                throw LoadWeatherError.castIntFailed
+                throw LoadWeatherError.loadMaxTempFailed
             }
             guard let minTemp = weatherJsonObj["min_temp"] as? Int else {
-                throw LoadWeatherError.castIntFailed
+                throw LoadWeatherError.loadMinTempFailed
             }
             self.maxTempLabel.text = String(maxTemp)
             self.minTempLabel.text = String(minTemp)
@@ -100,8 +100,9 @@ final class ViewController: UIViewController {
         case decodeDataFailed
         case encodeDataFailed
         case castDictFailed
-        case castStringFailed
-        case castIntFailed
+        case loadWeatherFailed
+        case loadMaxTempFailed
+        case loadMinTempFailed
     }
 }
 
