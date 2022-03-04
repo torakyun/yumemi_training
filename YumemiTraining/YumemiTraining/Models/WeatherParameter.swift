@@ -6,8 +6,8 @@
 //
 
 struct WeatherParameter {
-    var area: String
-    var date: String
+    let area: String
+    let date: String
 }
 
 extension WeatherParameter: Codable {}
