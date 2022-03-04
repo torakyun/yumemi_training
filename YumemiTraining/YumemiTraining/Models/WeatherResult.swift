@@ -6,9 +6,9 @@
 //
 
 struct WeatherResult {
-    var weather: String
-    var maxTemp: Int
-    var minTemp: Int
+    let weather: String
+    let maxTemp: Int
+    let minTemp: Int
 }
 
 extension WeatherResult: Codable {}

@@ -40,7 +40,7 @@ final class WeatherViewController: UIViewController {
             let weatherPrameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
             
             // 天気予報をAPIから取得
-            let weatherResult = try WeatherAPIService.fetchWeather(weatherPrameter)
+            let weatherResult = try WeatherAPI.fetchWeather(weatherPrameter)
             
             // 天気の画像を設定
             let weatherImageResource = self.weatherImageResource(weatherResult.weather)
