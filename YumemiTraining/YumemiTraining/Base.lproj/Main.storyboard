@@ -3,9 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,89 +14,13 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-OE-Kp7" userLabel="MainStackView">
-                                <rect key="frame" x="103.5" y="331.5" width="207" height="243"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iLo-YF-PhL">
-                                        <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="iLo-YF-PhL" secondAttribute="height" id="L25-eD-8nu"/>
-                                        </constraints>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="DS6-Iu-KSd" userLabel="LabelStackView">
-                                        <rect key="frame" x="0.0" y="207" width="207" height="36"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo2-9X-vtS">
-                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="36"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <color key="textColor" name="Blue"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6t-gW-YGY">
-                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="36"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                <color key="textColor" name="Red"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CcG-tk-LZg" userLabel="ButtonStackView">
-                                <rect key="frame" x="103.5" y="654.5" width="207" height="32"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EG8-b7-jVg">
-                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="32"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Close">
-                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nox-y5-K0O">
-                                        <rect key="frame" x="103.5" y="0.0" width="103.5" height="32"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Reload">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="reloadButtonDidPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t6Q-9J-1YT"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="CcG-tk-LZg" firstAttribute="width" secondItem="TO7-OE-Kp7" secondAttribute="width" id="CSp-Ia-iMh"/>
-                            <constraint firstItem="TO7-OE-Kp7" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="Hby-Pz-M4P"/>
-                            <constraint firstItem="TO7-OE-Kp7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="V2i-74-ZEL"/>
-                            <constraint firstItem="CcG-tk-LZg" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="bLA-fp-a9k"/>
-                            <constraint firstItem="CcG-tk-LZg" firstAttribute="top" secondItem="TO7-OE-Kp7" secondAttribute="bottom" constant="80" id="c8q-mj-vTB"/>
-                            <constraint firstItem="TO7-OE-Kp7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="h08-Cs-jEi"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <connections>
-                        <outlet property="maxTempLabel" destination="j6t-gW-YGY" id="1ko-6z-XfL"/>
-                        <outlet property="minTempLabel" destination="Bo2-9X-vtS" id="4Uw-fl-jjM"/>
-                        <outlet property="weatherImageView" destination="iLo-YF-PhL" id="WmI-jY-TvN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="84.375"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="Blue">
-            <color red="0.20499999821186066" green="0.53700000047683716" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Red">
-            <color red="1" green="0.210999995470047" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
