@@ -20,6 +20,17 @@ final class WeatherViewController: UIViewController {
     
     weak var delegate: WeatherViewControllerDelegate?
     
+    override func viewDidLoad() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(foreground(notification:)),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
+    }
+    
+    @objc private func foreground(notification: Notification) {
+        self.loadWeather()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.loadWeather()
