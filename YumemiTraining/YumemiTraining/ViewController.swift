@@ -33,7 +33,7 @@ final class ViewController: UIViewController {
             ]
             
             let jsonData = try JSONSerialization.data(withJSONObject: jsonObj, options: [])
-            guard let jsonStr = String(bytes: jsonData, encoding: .utf8) else {
+            guard let jsonStr = String(data: jsonData, encoding: .utf8) else {
                 throw LoadWeatherError.decodeDataFailed
             }
             
