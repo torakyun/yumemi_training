@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  WeatherAPI.swift
 //  YumemiTraining
 //
 //  Created by 水野虎樹 on 2022/03/04.
@@ -13,7 +13,7 @@ enum FetchWeatherError: Error {
     case decodeDataFailed
 }
 
-enum WeatherAPIService {
+enum WeatherAPI {
     
     static func fetchWeather(_ weatherParameter: WeatherParameter) throws -> WeatherResult {
         
