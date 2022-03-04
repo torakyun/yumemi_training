@@ -27,9 +27,10 @@ final class ViewController: UIViewController {
         
         do {
             // 天気予報に必要なパラメータをJSON文字列で保持
-            var jsonObj = Dictionary<String, Any>()
-            jsonObj["area"] = "tokyo"
-            jsonObj["date"] = "2020-04-01T12:00:00+09:00"
+            let jsonObj: [String: Any] = [
+                "area": "tokyo",
+                "date": "2020-04-01T12:00:00+09:00"
+            ]
             
             let jsonData = try JSONSerialization.data(withJSONObject: jsonObj, options: [])
             let jsonStr = String(bytes: jsonData, encoding: .utf8)!
