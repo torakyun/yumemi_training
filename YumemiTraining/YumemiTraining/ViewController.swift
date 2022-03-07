@@ -28,7 +28,7 @@ final class ViewController: UIViewController {
             WeatherViewController(coder: coder)
         }
         guard let viewController = viewController else {
-            throw MainError.weatherViewControllerNotFound
+            fatalError()
         }
         viewController.delegate = self
         self.present(viewController, animated: true)
