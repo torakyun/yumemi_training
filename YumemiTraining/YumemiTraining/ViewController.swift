@@ -35,6 +35,8 @@ final class ViewController: UIViewController {
     }
 }
 
+// MARK: - WeatherViewControllerDelegate
+
 extension ViewController: WeatherViewControllerDelegate {
     func weatherViewControllerDidPressClose(_ viewController: WeatherViewController) {
         self.dismiss(animated: true)
