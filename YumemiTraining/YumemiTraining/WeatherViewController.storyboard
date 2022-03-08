@@ -70,6 +70,9 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Fqo-X7-mR5">
+                                <rect key="frame" x="197" y="604.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qB9-dx-5RA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -77,12 +80,15 @@
                             <constraint firstItem="ztZ-SV-NeE" firstAttribute="width" secondItem="wtM-GD-Zcf" secondAttribute="width" multiplier="0.5" id="H3l-mr-rD3"/>
                             <constraint firstItem="20I-Iy-tuF" firstAttribute="centerX" secondItem="qB9-dx-5RA" secondAttribute="centerX" id="NGC-Ti-14N"/>
                             <constraint firstItem="20I-Iy-tuF" firstAttribute="width" secondItem="ztZ-SV-NeE" secondAttribute="width" id="NOx-Ul-FEb"/>
+                            <constraint firstItem="Fqo-X7-mR5" firstAttribute="top" secondItem="ztZ-SV-NeE" secondAttribute="bottom" constant="30" id="TW5-ZD-hj0"/>
+                            <constraint firstItem="Fqo-X7-mR5" firstAttribute="centerX" secondItem="qB9-dx-5RA" secondAttribute="centerX" id="tb3-qG-Vat"/>
                             <constraint firstItem="20I-Iy-tuF" firstAttribute="top" secondItem="ztZ-SV-NeE" secondAttribute="bottom" constant="80" id="vO5-sa-8wn"/>
                             <constraint firstItem="ztZ-SV-NeE" firstAttribute="centerY" secondItem="qB9-dx-5RA" secondAttribute="centerY" id="w92-VN-dpA"/>
                             <constraint firstItem="ztZ-SV-NeE" firstAttribute="centerX" secondItem="qB9-dx-5RA" secondAttribute="centerX" id="yM3-FE-eEm"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="Fqo-X7-mR5" id="caS-d9-xd3"/>
                         <outlet property="maxTempLabel" destination="W3M-f4-efm" id="PvC-Mc-pG1"/>
                         <outlet property="minTempLabel" destination="w2X-kR-aOX" id="dL0-KK-0si"/>
                         <outlet property="weatherImageView" destination="Z6I-AM-SIB" id="g6v-1P-G7U"/>
