@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */; };
 		B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */; };
-		B3AF310927BF99EE00A7C1DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310827BF99EE00A7C1DB /* ViewController.swift */; };
+		B3AF310927BF99EE00A7C1DB /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */; };
 		B3AF310C27BF99EE00A7C1DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310A27BF99EE00A7C1DB /* Main.storyboard */; };
 		B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */; };
 		B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */; };
@@ -17,13 +17,15 @@
 		B3D5259427D1AA93002D7A4D /* WeatherParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5259327D1AA93002D7A4D /* WeatherParameter.swift */; };
 		B3D5259627D1AAF0002D7A4D /* WeatherResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5259527D1AAF0002D7A4D /* WeatherResult.swift */; };
 		B3D5259927D1B112002D7A4D /* WeatherAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5259827D1B112002D7A4D /* WeatherAPI.swift */; };
+		B3D5259C27D1BD68002D7A4D /* WeatherViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */; };
+		B3D5259E27D1BEA3002D7A4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5259D27D1BEA3002D7A4D /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B3AF310127BF99EE00A7C1DB /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B3AF310827BF99EE00A7C1DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		B3AF310B27BF99EE00A7C1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3AF311027BF99EF00A7C1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -31,6 +33,8 @@
 		B3D5259327D1AA93002D7A4D /* WeatherParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherParameter.swift; sourceTree = "<group>"; };
 		B3D5259527D1AAF0002D7A4D /* WeatherResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResult.swift; sourceTree = "<group>"; };
 		B3D5259827D1B112002D7A4D /* WeatherAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI.swift; sourceTree = "<group>"; };
+		B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WeatherViewController.storyboard; sourceTree = "<group>"; };
+		B3D5259D27D1BEA3002D7A4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,10 +70,12 @@
 			children = (
 				B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */,
 				B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */,
-				B3AF310827BF99EE00A7C1DB /* ViewController.swift */,
+				B3D5259D27D1BEA3002D7A4D /* ViewController.swift */,
+				B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */,
 				B3D5259A27D1B1D6002D7A4D /* APIs */,
 				B3D5259727D1B0B8002D7A4D /* Models */,
 				B3AF310A27BF99EE00A7C1DB /* Main.storyboard */,
+				B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */,
 				B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */,
 				B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */,
 				B3AF311227BF99EF00A7C1DB /* Info.plist */,
@@ -158,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D5259C27D1BD68002D7A4D /* WeatherViewController.storyboard in Resources */,
 				B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */,
 				B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */,
 				B3AF310C27BF99EE00A7C1DB /* Main.storyboard in Resources */,
@@ -173,8 +180,9 @@
 			files = (
 				B3D5259627D1AAF0002D7A4D /* WeatherResult.swift in Sources */,
 				B3D5259927D1B112002D7A4D /* WeatherAPI.swift in Sources */,
-				B3AF310927BF99EE00A7C1DB /* ViewController.swift in Sources */,
+				B3AF310927BF99EE00A7C1DB /* WeatherViewController.swift in Sources */,
 				B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */,
+				B3D5259E27D1BEA3002D7A4D /* ViewController.swift in Sources */,
 				B3D5259427D1AA93002D7A4D /* WeatherParameter.swift in Sources */,
 				B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */,
 			);

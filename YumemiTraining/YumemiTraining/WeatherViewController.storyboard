@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AUM-E2-vVA">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Weather View Controller-->
+        <scene sceneID="MUS-n8-Oys">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="AUM-E2-vVA" customClass="WeatherViewController" customModule="YumemiTraining" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wtM-GD-Zcf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ztZ-SV-NeE" userLabel="MainStackView">
+                                <rect key="frame" x="103.5" y="331.5" width="207" height="243"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z6I-AM-SIB">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Z6I-AM-SIB" secondAttribute="height" id="pKt-Rn-1jz"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tWP-xv-5eE" userLabel="LabelStackView">
+                                        <rect key="frame" x="0.0" y="207" width="207" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2X-kR-aOX">
+                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" name="Blue"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3M-f4-efm">
+                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" name="Red"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="20I-Iy-tuF" userLabel="ButtonStackView">
+                                <rect key="frame" x="103.5" y="654.5" width="207" height="32"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGR-aS-bt9">
+                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="32"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Close">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="closeButtonDidPress:" destination="AUM-E2-vVA" eventType="touchUpInside" id="FdF-LO-yFD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ded-fG-kAR">
+                                        <rect key="frame" x="103.5" y="0.0" width="103.5" height="32"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Reload">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="reloadButtonDidPress:" destination="AUM-E2-vVA" eventType="touchUpInside" id="Hbz-vK-MQg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qB9-dx-5RA"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ztZ-SV-NeE" firstAttribute="width" secondItem="wtM-GD-Zcf" secondAttribute="width" multiplier="0.5" id="H3l-mr-rD3"/>
+                            <constraint firstItem="20I-Iy-tuF" firstAttribute="centerX" secondItem="qB9-dx-5RA" secondAttribute="centerX" id="NGC-Ti-14N"/>
+                            <constraint firstItem="20I-Iy-tuF" firstAttribute="width" secondItem="ztZ-SV-NeE" secondAttribute="width" id="NOx-Ul-FEb"/>
+                            <constraint firstItem="20I-Iy-tuF" firstAttribute="top" secondItem="ztZ-SV-NeE" secondAttribute="bottom" constant="80" id="vO5-sa-8wn"/>
+                            <constraint firstItem="ztZ-SV-NeE" firstAttribute="centerY" secondItem="qB9-dx-5RA" secondAttribute="centerY" id="w92-VN-dpA"/>
+                            <constraint firstItem="ztZ-SV-NeE" firstAttribute="centerX" secondItem="qB9-dx-5RA" secondAttribute="centerX" id="yM3-FE-eEm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="maxTempLabel" destination="W3M-f4-efm" id="PvC-Mc-pG1"/>
+                        <outlet property="minTempLabel" destination="w2X-kR-aOX" id="dL0-KK-0si"/>
+                        <outlet property="weatherImageView" destination="Z6I-AM-SIB" id="g6v-1P-G7U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfj-fq-gVr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="84.375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="Blue">
+            <color red="0.20499999821186066" green="0.53700000047683716" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Red">
+            <color red="1" green="0.210999995470047" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
