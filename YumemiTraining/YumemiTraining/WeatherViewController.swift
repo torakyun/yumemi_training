@@ -12,8 +12,8 @@ protocol WeatherViewControllerDelegate: AnyObject {
     func weatherViewControllerDidPressClose(_ viewController: WeatherViewController)
 }
 
-protocol WeatherViewControllerDelegate2: AnyObject {
-    func fetchWeather(at area: String, date: Date) throws -> WeatherResult
+protocol WeatherModel: AnyObject {
+    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<WeatherResult, Error>) -> Void)
 }
 
 final class WeatherViewController: UIViewController {
@@ -24,7 +24,7 @@ final class WeatherViewController: UIViewController {
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     
     weak var delegate: WeatherViewControllerDelegate?
-    var delegate2: WeatherViewControllerDelegate2?
+    var weatherModel: WeatherModel?
     
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self,
@@ -58,11 +58,7 @@ final class WeatherViewController: UIViewController {
         
         // 天気予報をAPIから取得
         self.activityIndicatorView.startAnimating()
-        guard let delegate2 = self.delegate2 else {
-            return
-        }
-        DispatchQueue.global().async {
-            let weatherResult = Result { try delegate2.fetchWeather(at: "tokyo", date: Date())}
+        weatherModel?.fetchWeather(at: "tokyo", date: Date()) { weatherResult in
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
                 
