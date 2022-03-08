@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum MainError: Error {
-    case weatherViewControllerNotFound
-}
-
 final class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
