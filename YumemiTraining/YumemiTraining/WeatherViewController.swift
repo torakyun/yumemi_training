@@ -27,12 +27,12 @@ final class WeatherViewController: UIViewController {
                                                object: nil)
     }
     
-    @objc private func foreground(notification: Notification) {
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.loadWeather()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    @objc private func foreground(notification: Notification) {
         self.loadWeather()
     }
 
