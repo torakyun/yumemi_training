@@ -27,6 +27,7 @@ final class ViewController: UIViewController {
             fatalError()
         }
         viewController.delegate = self
+        viewController.delegate2 = WeatherModelImpl()
         self.present(viewController, animated: true)
     }
 }

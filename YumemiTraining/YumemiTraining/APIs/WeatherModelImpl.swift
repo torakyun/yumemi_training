@@ -1,5 +1,5 @@
 //
-//  WeatherAPI.swift
+//  WeatherModelImpl.swift
 //  YumemiTraining
 //
 //  Created by 水野虎樹 on 2022/03/04.
@@ -8,12 +8,32 @@
 import Foundation
 import YumemiWeather
 
-enum WeatherAPI {
+final class WeatherModelImpl {
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        return dateFormatter
+    }()
+}
+
+extension WeatherModelImpl {
+    enum FetchWeatherError: Error {
+        case encodeDataFailed
+        case decodeDataFailed
+    }
+}
+
+// MARK: - WeatherViewControllerDelegate2
+extension WeatherModelImpl: WeatherViewControllerDelegate2 {
     
-    static func fetchWeather(_ weatherParameter: WeatherParameter) throws -> WeatherResult {
+    func fetchWeather(at area: String, date: Date) throws -> WeatherResult {
         
+        // weatherParameterを作成
+        let weatherParameter = WeatherParameter(area: area, date: date)
         // WeatherPrameterをエンコード
-        let weatherParameterData = try JSONEncoder().encode(weatherParameter)
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .formatted(dateFormatter)
+        let weatherParameterData = try encoder.encode(weatherParameter)
         
         // 天気予報をAPIから取得
         guard let weatherParameterJsonStr = String(data: weatherParameterData, encoding: .utf8) else {
@@ -30,11 +50,6 @@ enum WeatherAPI {
         return try decoder.decode(WeatherResult.self, from: weatherResultData)
         
     }
-}
-
-extension WeatherAPI {
-    enum FetchWeatherError: Error {
-        case encodeDataFailed
-        case decodeDataFailed
-    }
+    
+    
 }

@@ -12,6 +12,10 @@ protocol WeatherViewControllerDelegate: AnyObject {
     func weatherViewControllerDidPressClose(_ viewController: WeatherViewController)
 }
 
+protocol WeatherViewControllerDelegate2: AnyObject {
+    func fetchWeather(at area: String, date: Date) throws -> WeatherResult
+}
+
 final class WeatherViewController: UIViewController {
     
     @IBOutlet private weak var weatherImageView: UIImageView!
@@ -20,6 +24,7 @@ final class WeatherViewController: UIViewController {
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     
     weak var delegate: WeatherViewControllerDelegate?
+    var delegate2: WeatherViewControllerDelegate2?
     
     override func viewDidLoad() {
         NotificationCenter.default.addObserver(self,
@@ -47,13 +52,13 @@ final class WeatherViewController: UIViewController {
     
     private func loadWeather() {
         
-        // weatherPrameterを作成
-        let weatherPrameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
-        
         // 天気予報をAPIから取得
         self.activityIndicatorView.startAnimating()
+        guard let delegate2 = self.delegate2 else {
+            return
+        }
         DispatchQueue.global().async {
-            let weatherResult = Result { try WeatherAPI.fetchWeather(weatherPrameter)}
+            let weatherResult = Result { try delegate2.fetchWeather(at: "tokyo", date: Date())}
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
                 
@@ -70,9 +75,9 @@ final class WeatherViewController: UIViewController {
                 case .failure(let error):
                     let message: String
                     switch error {
-                    case WeatherAPI.FetchWeatherError.decodeDataFailed:
+                    case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
                         message = "JSONエンコードに失敗"
-                    case WeatherAPI.FetchWeatherError.decodeDataFailed:
+                    case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
                         message = "JSONデコードに失敗"
                     case YumemiWeatherError.unknownError:
                         message = "天気情報の取得に失敗"
