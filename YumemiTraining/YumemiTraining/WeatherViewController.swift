@@ -41,6 +41,10 @@ final class WeatherViewController: UIViewController {
         super.viewDidAppear(animated)
         self.loadWeather()
     }
+    
+    deinit {
+        print(#function)
+    }
 
     @IBAction private func reloadButtonDidPress(_ sender: Any) {
         self.loadWeather()
