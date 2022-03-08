@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum MainError: Error {
-    case weatherViewControllerNotFound
-}
-
 final class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,12 +24,14 @@ final class ViewController: UIViewController {
             WeatherViewController(coder: coder)
         }
         guard let viewController = viewController else {
-            throw MainError.weatherViewControllerNotFound
+            fatalError()
         }
         viewController.delegate = self
         self.present(viewController, animated: true)
     }
 }
+
+// MARK: - WeatherViewControllerDelegate
 
 extension ViewController: WeatherViewControllerDelegate {
     func weatherViewControllerDidPressClose(_ viewController: WeatherViewController) {
