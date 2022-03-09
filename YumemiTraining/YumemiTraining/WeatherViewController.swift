@@ -73,31 +73,28 @@ final class WeatherViewController: UIViewController {
     
     private func handleWeather(_ result: Result<WeatherResult, Error>) {
         // weatherResultをハンドリング
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            switch result {
-            case let .success(data):
-                // 天気の画像を設定
-                let weatherImageResource = self.weatherImageResource(data.weather)
-                self.weatherImageView.image = weatherImageResource.image
-                self.weatherImageView.tintColor = weatherImageResource.color
-                //最高気温と最低気温を設定
-                self.minTempLabel.text = String(data.minTemp)
-                self.maxTempLabel.text = String(data.maxTemp)
-            case let .failure(error):
-                let message: String
-                switch error {
-                case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-                    message = "JSONエンコードに失敗"
-                case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-                    message = "JSONデコードに失敗"
-                case YumemiWeatherError.unknownError:
-                    message = "天気情報の取得に失敗"
-                default:
-                    message = "エラー発生"
-                }
-                self.showErrorAlert(title: "Error", message: message)
+        switch result {
+        case let .success(data):
+            // 天気の画像を設定
+            let weatherImageResource = self.weatherImageResource(data.weather)
+            self.weatherImageView.image = weatherImageResource.image
+            self.weatherImageView.tintColor = weatherImageResource.color
+            //最高気温と最低気温を設定
+            self.minTempLabel.text = String(data.minTemp)
+            self.maxTempLabel.text = String(data.maxTemp)
+        case let .failure(error):
+            let message: String
+            switch error {
+            case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+                message = "JSONエンコードに失敗"
+            case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+                message = "JSONデコードに失敗"
+            case YumemiWeatherError.unknownError:
+                message = "天気情報の取得に失敗"
+            default:
+                message = "エラー発生"
             }
+            self.showErrorAlert(title: "Error", message: message)
         }
     }
     
