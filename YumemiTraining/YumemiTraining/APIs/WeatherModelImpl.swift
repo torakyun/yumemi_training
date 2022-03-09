@@ -9,7 +9,7 @@ import Foundation
 import YumemiWeather
 
 protocol WeatherModelDelegate: AnyObject {
-    func weatherModelDidFetchWeather(_ weatherModelImpl: WeatherModelImpl, _ result: Result<WeatherResult, Error>)
+    func weatherModel(_ weatherModelImpl: WeatherModelImpl, didFetchWeatherResult result: Result<WeatherResult, Error>)
 }
 
 final class WeatherModelImpl: WeatherModel {
@@ -48,9 +48,9 @@ final class WeatherModelImpl: WeatherModel {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let weatherResult = try decoder.decode(WeatherResult.self, from: weatherResultData)
                 
-                self.delegate?.weatherModelDidFetchWeather(self, .success(weatherResult))
+                self.delegate?.weatherModel(self, didFetchWeatherResult: .success(weatherResult))
             } catch {
-                self.delegate?.weatherModelDidFetchWeather(self, .failure(error))
+                self.delegate?.weatherModel(self, didFetchWeatherResult: .failure(error))
             }
         }
     }
