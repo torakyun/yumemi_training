@@ -53,9 +53,10 @@ final class WeatherViewController: UIViewController {
         
         // 天気予報をAPIから取得
         self.activityIndicatorView.startAnimating()
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [weak self] in
             let weatherResult = Result { try WeatherAPI.fetchWeather(weatherParameter) }
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 self.activityIndicatorView.stopAnimating()
                 
                 // weatherResultをハンドリング
