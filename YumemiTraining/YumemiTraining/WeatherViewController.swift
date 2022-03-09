@@ -29,16 +29,15 @@ final class WeatherViewController: UIViewController {
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     
     weak var delegate: WeatherViewControllerDelegate?
-    var weatherModel: WeatherModel?
+    private let weatherModel: WeatherModel
     
     required init?(coder: NSCoder, weatherModel: WeatherModel) {
-        super.init(coder: coder)
         self.weatherModel = weatherModel
-        self.weatherModel?.delegate = self
+        super.init(coder: coder)
+        self.weatherModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
         fatalError("init(coder) has not been implemented")
     }
     
@@ -73,7 +72,7 @@ final class WeatherViewController: UIViewController {
     
     private func loadWeather() {
         self.activityIndicatorView.startAnimating()
-        weatherModel?.fetchWeather(at: "tokyo", date: Date())
+        weatherModel.fetchWeather(at: "tokyo", date: Date())
     }
     
     private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
