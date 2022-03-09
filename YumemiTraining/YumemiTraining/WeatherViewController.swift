@@ -12,10 +12,6 @@ protocol WeatherViewControllerDelegate: AnyObject {
     func weatherViewControllerDidPressClose(_ viewController: WeatherViewController)
 }
 
-protocol WeatherModel: AnyObject {
-    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<WeatherResult, Error>) -> Void)
-}
-
 final class WeatherViewController: UIViewController {
     
     @IBOutlet private weak var weatherImageView: UIImageView!
@@ -24,7 +20,20 @@ final class WeatherViewController: UIViewController {
     @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     
     weak var delegate: WeatherViewControllerDelegate?
-    var weatherModel: WeatherModel?
+    private let weatherModel: WeatherModel
+    
+    required init?(coder: NSCoder, weatherModel: WeatherModel) {
+        self.weatherModel = weatherModel
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder) has not been implemented")
+    }
+    
+    deinit {
+        print(#function)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,27 +43,13 @@ final class WeatherViewController: UIViewController {
                                                object: nil)
     }
     
-    @objc private func foreground(notification: Notification) {
-        self.loadWeather()
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.loadWeather()
     }
     
-    required init?(coder: NSCoder, weatherModel: WeatherModel) {
-        super.init(coder: coder)
-        self.weatherModel = weatherModel
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        fatalError("init(coder) has not been implemented")
-    }
-    
-    deinit {
-        print(#function)
+    @objc private func foreground(notification: Notification) {
+        self.loadWeather()
     }
 
     @IBAction private func reloadButtonDidPress(_ sender: Any) {
@@ -67,7 +62,7 @@ final class WeatherViewController: UIViewController {
     
     private func loadWeather() {
         self.activityIndicatorView.startAnimating()
-        weatherModel?.fetchWeather(at: "tokyo", date: Date()) { result in
+        self.weatherModel.fetchWeather(at: "tokyo", date: Date()) { result in
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
                 self.handleWeather(result)
@@ -79,9 +74,8 @@ final class WeatherViewController: UIViewController {
         // weatherResultをハンドリング
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-            self.activityIndicatorView.stopAnimating()
             switch result {
-            case .success(let data):
+            case let .success(data):
                 // 天気の画像を設定
                 let weatherImageResource = self.weatherImageResource(data.weather)
                 self.weatherImageView.image = weatherImageResource.image
@@ -89,7 +83,7 @@ final class WeatherViewController: UIViewController {
                 //最高気温と最低気温を設定
                 self.minTempLabel.text = String(data.minTemp)
                 self.maxTempLabel.text = String(data.maxTemp)
-            case .failure(let error):
+            case let .failure(error):
                 let message: String
                 switch error {
                 case WeatherModelImpl.FetchWeatherError.decodeDataFailed:

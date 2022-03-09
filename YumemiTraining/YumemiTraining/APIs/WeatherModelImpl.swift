@@ -44,6 +44,7 @@ final class WeatherModelImpl: WeatherModel {
                 completion(.success(weatherResult))
             } catch {
                 completion(.failure(error))
+                
             }
         }
     }
