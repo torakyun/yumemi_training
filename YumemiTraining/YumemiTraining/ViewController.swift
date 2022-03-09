@@ -21,13 +21,12 @@ final class ViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "WeatherViewController", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController { (coder) in
-            WeatherViewController(coder: coder)
+            WeatherViewController(coder: coder, weatherModel: WeatherModelImpl())
         }
         guard let viewController = viewController else {
             fatalError()
         }
         viewController.delegate = self
-        viewController.delegate2 = WeatherModelImpl()
         self.present(viewController, animated: true)
     }
 }
