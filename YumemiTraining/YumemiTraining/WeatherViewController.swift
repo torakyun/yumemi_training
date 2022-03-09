@@ -27,6 +27,7 @@ final class WeatherViewController: UIViewController {
     var weatherModel: WeatherModel?
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(foreground(notification:)),
                                                name: UIApplication.willEnterForegroundNotification,
@@ -42,6 +43,16 @@ final class WeatherViewController: UIViewController {
         self.loadWeather()
     }
     
+    required init?(coder: NSCoder, weatherModel: WeatherModel) {
+        super.init(coder: coder)
+        self.weatherModel = weatherModel
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        fatalError("init(coder) has not been implemented")
+    }
+    
     deinit {
         print(#function)
     }
@@ -55,44 +66,47 @@ final class WeatherViewController: UIViewController {
     }
     
     private func loadWeather() {
-        
-        // 天気予報をAPIから取得
         self.activityIndicatorView.startAnimating()
-        weatherModel?.fetchWeather(at: "tokyo", date: Date()) { weatherResult in
+        weatherModel?.fetchWeather(at: "tokyo", date: Date()) { result in
             DispatchQueue.main.async {
                 self.activityIndicatorView.stopAnimating()
-                
-                // weatherResultをハンドリング
-                switch weatherResult {
-                case .success(let data):
-                    // 天気の画像を設定
-                    let weatherImageResource = self.weatherImageResource(data.weather)
-                    self.weatherImageView.image = weatherImageResource.image
-                    self.weatherImageView.tintColor = weatherImageResource.color
-                    //最高気温と最低気温を設定
-                    self.minTempLabel.text = String(data.minTemp)
-                    self.maxTempLabel.text = String(data.maxTemp)
-                case .failure(let error):
-                    let message: String
-                    switch error {
-                    case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-                        message = "JSONエンコードに失敗"
-                    case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-                        message = "JSONデコードに失敗"
-                    case YumemiWeatherError.unknownError:
-                        message = "天気情報の取得に失敗"
-                    default:
-                        message = "エラー発生"
-                    }
-                    self.showErrorAlert(title: "Error", message: message)
-                }
+                self.handleWeather(result)
             }
         }
-            
+    }
+    
+    private func handleWeather(_ result: Result<WeatherResult, Error>) {
+        // weatherResultをハンドリング
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            self.activityIndicatorView.stopAnimating()
+            switch result {
+            case .success(let data):
+                // 天気の画像を設定
+                let weatherImageResource = self.weatherImageResource(data.weather)
+                self.weatherImageView.image = weatherImageResource.image
+                self.weatherImageView.tintColor = weatherImageResource.color
+                //最高気温と最低気温を設定
+                self.minTempLabel.text = String(data.minTemp)
+                self.maxTempLabel.text = String(data.maxTemp)
+            case .failure(let error):
+                let message: String
+                switch error {
+                case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+                    message = "JSONエンコードに失敗"
+                case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+                    message = "JSONデコードに失敗"
+                case YumemiWeatherError.unknownError:
+                    message = "天気情報の取得に失敗"
+                default:
+                    message = "エラー発生"
+                }
+                self.showErrorAlert(title: "Error", message: message)
+            }
+        }
     }
     
     private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
-        
         switch weather {
         case "sunny":
             return (UIImage(named: "sunny"), .red)
@@ -103,7 +117,6 @@ final class WeatherViewController: UIViewController {
         default:
             return (nil, nil)
         }
-        
     }
     
     private func showErrorAlert(title: String?, message: String?) {
@@ -113,4 +126,3 @@ final class WeatherViewController: UIViewController {
         self.present(alert, animated: true)
     }
 }
-

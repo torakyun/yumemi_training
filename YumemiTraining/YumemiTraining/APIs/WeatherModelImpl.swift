@@ -9,7 +9,8 @@ import Foundation
 import YumemiWeather
 
 final class WeatherModelImpl: WeatherModel {
-    private lazy var dateFormatter: DateFormatter = {
+    
+    private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         return dateFormatter
@@ -17,7 +18,8 @@ final class WeatherModelImpl: WeatherModel {
     
     func fetchWeather(at area: String, date: Date, completion: @escaping (Result<WeatherResult, Error>) -> Void) {
         
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [weak self] in
+            guard let self = self else { return }
             do {
                 // weatherParameterを作成
                 let weatherParameter = WeatherParameter(area: area, date: date)
@@ -44,8 +46,6 @@ final class WeatherModelImpl: WeatherModel {
                 completion(.failure(error))
             }
         }
-        
-        
     }
 }
 
