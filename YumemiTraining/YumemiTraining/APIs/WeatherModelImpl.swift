@@ -8,6 +8,10 @@
 import Foundation
 import YumemiWeather
 
+protocol WeatherModelDelegate: AnyObject {
+    func weatherModelDidFetchWeather(_ weatherModelImpl: WeatherModelImpl, _ result: Result<WeatherResult, Error>)
+}
+
 final class WeatherModelImpl: WeatherModel {
     
     weak var delegate: WeatherModelDelegate?
