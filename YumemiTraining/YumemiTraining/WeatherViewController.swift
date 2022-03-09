@@ -95,7 +95,7 @@ extension WeatherViewController: WeatherModelDelegate {
             guard let self = self else { return }
             self.activityIndicatorView.stopAnimating()
             switch result {
-            case .success(let data):
+            case let .success(data):
                 // 天気の画像を設定
                 let weatherImageResource = self.weatherImageResource(data.weather)
                 self.weatherImageView.image = weatherImageResource.image
@@ -103,7 +103,7 @@ extension WeatherViewController: WeatherModelDelegate {
                 //最高気温と最低気温を設定
                 self.minTempLabel.text = String(data.minTemp)
                 self.maxTempLabel.text = String(data.maxTemp)
-            case .failure(let error):
+            case let .failure(error):
                 let message: String
                 switch error {
                 case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
