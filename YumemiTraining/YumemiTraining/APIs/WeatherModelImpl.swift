@@ -9,7 +9,7 @@ import Foundation
 import YumemiWeather
 
 protocol WeatherModelDelegate: AnyObject {
-    func weatherModel(_ weatherModelImpl: WeatherModelImpl, didFetchWeatherResult result: Result<WeatherResult, Error>)
+    func weatherModel(_ weatherModel: WeatherModel, didFetchWeatherResult result: Result<WeatherResult, Error>)
 }
 
 final class WeatherModelImpl: WeatherModel {

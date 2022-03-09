@@ -89,7 +89,7 @@ final class WeatherViewController: UIViewController {
 
 // MARK: - WeatherModelDelegate
 extension WeatherViewController: WeatherModelDelegate {
-    func weatherModel(_ weatherModelImpl: WeatherModelImpl, didFetchWeatherResult result: Result<WeatherResult, Error>) {
+    func weatherModel(_ weatherModel: WeatherModel, didFetchWeatherResult result: Result<WeatherResult, Error>) {
         // weatherResultをハンドリング
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
