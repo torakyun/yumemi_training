@@ -63,7 +63,7 @@ final class WeatherViewController: UIViewController {
     
     private func loadWeather() {
         self.activityIndicatorView.startAnimating()
-        weatherModel.fetchWeather(at: "tokyo", date: Date())
+        self.weatherModel.fetchWeather(at: "tokyo", date: Date())
     }
     
     private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
