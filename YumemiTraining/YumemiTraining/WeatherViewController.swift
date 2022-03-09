@@ -87,6 +87,7 @@ final class WeatherViewController: UIViewController {
     }
 }
 
+// MARK: - WeatherModelDelegate
 extension WeatherViewController: WeatherModelDelegate {
     func weatherModelDidFetchWeather(_ weatherModelImpl: WeatherModelImpl, _ result: Result<WeatherResult, Error>) {
         // weatherResultをハンドリング
