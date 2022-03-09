@@ -17,6 +17,7 @@ final class WeatherViewController: UIViewController {
     @IBOutlet private weak var weatherImageView: UIImageView!
     @IBOutlet private weak var maxTempLabel: UILabel!
     @IBOutlet private weak var minTempLabel: UILabel!
+    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
     
     weak var delegate: WeatherViewControllerDelegate?
     
@@ -47,30 +48,44 @@ final class WeatherViewController: UIViewController {
     
     private func loadWeather() {
         
-        do {
-            // WeatherParameterを作成
-            let weatherParameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
-            
-            // 天気予報をAPIから取得
-            let weatherResult = try WeatherAPI.fetchWeather(weatherParameter)
-            
-            // 天気の画像を設定
-            let weatherImageResource = self.weatherImageResource(weatherResult.weather)
-            self.weatherImageView.image = weatherImageResource.image
-            self.weatherImageView.tintColor = weatherImageResource.color
-            
-            //最高気温と最低気温を設定
-            self.minTempLabel.text = String(weatherResult.minTemp)
-            self.maxTempLabel.text = String(weatherResult.maxTemp)
-            
-        } catch YumemiWeatherError.invalidParameterError {
-            self.showErrorAlert(title: "天気情報の取得に失敗", message: "invalidParameterError")
-        } catch YumemiWeatherError.unknownError {
-            self.showErrorAlert(title: "天気情報の取得に失敗", message: "unknownError")
-        } catch {
-            print(error)
-        }
+        // WeatherParameterを作成
+        let weatherParameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
         
+        // 天気予報をAPIから取得
+        self.activityIndicatorView.startAnimating()
+        DispatchQueue.global().async { [weak self] in
+            let weatherResult = Result { try WeatherAPI.fetchWeather(weatherParameter) }
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.activityIndicatorView.stopAnimating()
+                
+                // weatherResultをハンドリング
+                switch weatherResult {
+                case .success(let data):
+                    // 天気の画像を設定
+                    let weatherImageResource = self.weatherImageResource(data.weather)
+                    self.weatherImageView.image = weatherImageResource.image
+                    self.weatherImageView.tintColor = weatherImageResource.color
+                    //最高気温と最低気温を設定
+                    self.minTempLabel.text = String(data.minTemp)
+                    self.maxTempLabel.text = String(data.maxTemp)
+                case .failure(let error):
+                    let message: String
+                    switch error {
+                    case WeatherAPI.FetchWeatherError.decodeDataFailed:
+                        message = "JSONエンコードに失敗"
+                    case WeatherAPI.FetchWeatherError.decodeDataFailed:
+                        message = "JSONデコードに失敗"
+                    case YumemiWeatherError.unknownError:
+                        message = "天気情報の取得に失敗"
+                    default:
+                        message = "エラー発生"
+                    }
+                    self.showErrorAlert(title: "Error", message: message)
+                }
+            }
+        }
+            
     }
     
     private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
