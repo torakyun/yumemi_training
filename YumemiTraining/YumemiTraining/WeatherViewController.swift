@@ -25,7 +25,6 @@ final class WeatherViewController: UIViewController {
     required init?(coder: NSCoder, weatherModel: WeatherModel) {
         self.weatherModel = weatherModel
         super.init(coder: coder)
-        self.weatherModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -63,7 +62,40 @@ final class WeatherViewController: UIViewController {
     
     private func loadWeather() {
         self.activityIndicatorView.startAnimating()
-        self.weatherModel.fetchWeather(at: "tokyo", date: Date())
+        self.weatherModel.fetchWeather(at: "tokyo", date: Date()) { [weak self] result in
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.activityIndicatorView.stopAnimating()
+                self.handleWeather(result)
+            }
+        }
+    }
+    
+    private func handleWeather(_ result: Result<WeatherResult, Error>) {
+        // weatherResultをハンドリング
+        switch result {
+        case let .success(data):
+            // 天気の画像を設定
+            let weatherImageResource = self.weatherImageResource(data.weather)
+            self.weatherImageView.image = weatherImageResource.image
+            self.weatherImageView.tintColor = weatherImageResource.color
+            //最高気温と最低気温を設定
+            self.minTempLabel.text = String(data.minTemp)
+            self.maxTempLabel.text = String(data.maxTemp)
+        case let .failure(error):
+            let message: String
+            switch error {
+            case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+                message = "JSONエンコードに失敗"
+            case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+                message = "JSONデコードに失敗"
+            case YumemiWeatherError.unknownError:
+                message = "天気情報の取得に失敗"
+            default:
+                message = "エラー発生"
+            }
+            self.showErrorAlert(title: "Error", message: message)
+        }
     }
     
     private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
@@ -84,40 +116,5 @@ final class WeatherViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
-    }
-}
-
-// MARK: - WeatherModelDelegate
-
-extension WeatherViewController: WeatherModelDelegate {
-    func weatherModel(_ weatherModel: WeatherModel, didFetchWeatherResult result: Result<WeatherResult, Error>) {
-        // weatherResultをハンドリング
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            self.activityIndicatorView.stopAnimating()
-            switch result {
-            case let .success(data):
-                // 天気の画像を設定
-                let weatherImageResource = self.weatherImageResource(data.weather)
-                self.weatherImageView.image = weatherImageResource.image
-                self.weatherImageView.tintColor = weatherImageResource.color
-                //最高気温と最低気温を設定
-                self.minTempLabel.text = String(data.minTemp)
-                self.maxTempLabel.text = String(data.maxTemp)
-            case let .failure(error):
-                let message: String
-                switch error {
-                case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-                    message = "JSONエンコードに失敗"
-                case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-                    message = "JSONデコードに失敗"
-                case YumemiWeatherError.unknownError:
-                    message = "天気情報の取得に失敗"
-                default:
-                    message = "エラー発生"
-                }
-                self.showErrorAlert(title: "Error", message: message)
-            }
-        }
     }
 }

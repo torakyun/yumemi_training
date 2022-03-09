@@ -8,13 +8,7 @@
 import Foundation
 import YumemiWeather
 
-protocol WeatherModelDelegate: AnyObject {
-    func weatherModel(_ weatherModel: WeatherModel, didFetchWeatherResult result: Result<WeatherResult, Error>)
-}
-
 final class WeatherModelImpl: WeatherModel {
-    
-    weak var delegate: WeatherModelDelegate?
     
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -22,7 +16,7 @@ final class WeatherModelImpl: WeatherModel {
         return dateFormatter
     }()
     
-    func fetchWeather(at area: String, date: Date) {
+    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<WeatherResult, Error>) -> Void) {
         
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
@@ -46,11 +40,11 @@ final class WeatherModelImpl: WeatherModel {
                 // WeatherResultをデコード
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let weatherResult = try decoder.decode(WeatherResult.self, from: weatherResultData)
-                
-                self.delegate?.weatherModel(self, didFetchWeatherResult: .success(weatherResult))
+                let weatherResult =  try decoder.decode(WeatherResult.self, from: weatherResultData)
+                completion(.success(weatherResult))
             } catch {
-                self.delegate?.weatherModel(self, didFetchWeatherResult: .failure(error))
+                completion(.failure(error))
+                
             }
         }
     }

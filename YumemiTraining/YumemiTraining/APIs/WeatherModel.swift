@@ -8,6 +8,5 @@
 import Foundation
 
 protocol WeatherModel: AnyObject {
-    var delegate: WeatherModelDelegate? { get set }
-    func fetchWeather(at area: String, date: Date)
+    func fetchWeather(at area: String, date: Date, completion: @escaping (Result<WeatherResult, Error>) -> Void)
 }
