@@ -31,23 +31,6 @@ final class WeatherViewController: UIViewController {
     weak var delegate: WeatherViewControllerDelegate?
     var weatherModel: WeatherModel?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(foreground(notification:)),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
-    }
-    
-    @objc private func foreground(notification: Notification) {
-        self.loadWeather()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.loadWeather()
-    }
-    
     required init?(coder: NSCoder, weatherModel: WeatherModel) {
         super.init(coder: coder)
         self.weatherModel = weatherModel
@@ -61,6 +44,23 @@ final class WeatherViewController: UIViewController {
     
     deinit {
         print(#function)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(foreground(notification:)),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.loadWeather()
+    }
+    
+    @objc private func foreground(notification: Notification) {
+        self.loadWeather()
     }
 
     @IBAction private func reloadButtonDidPress(_ sender: Any) {
