@@ -63,7 +63,8 @@ final class WeatherViewController: UIViewController {
     private func loadWeather() {
         self.activityIndicatorView.startAnimating()
         self.weatherModel.fetchWeather(at: "tokyo", date: Date()) { result in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
                 self.activityIndicatorView.stopAnimating()
                 self.handleWeather(result)
             }
