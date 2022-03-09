@@ -20,8 +20,20 @@ final class WeatherViewController: UIViewController {
     
     weak var delegate: WeatherViewControllerDelegate?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(foreground(notification:)),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.loadWeather()
+    }
+    
+    @objc private func foreground(notification: Notification) {
         self.loadWeather()
     }
 
@@ -36,11 +48,11 @@ final class WeatherViewController: UIViewController {
     private func loadWeather() {
         
         do {
-            // WeatherPrameterを作成
-            let weatherPrameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
+            // WeatherParameterを作成
+            let weatherParameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
             
             // 天気予報をAPIから取得
-            let weatherResult = try WeatherAPI.fetchWeather(weatherPrameter)
+            let weatherResult = try WeatherAPI.fetchWeather(weatherParameter)
             
             // 天気の画像を設定
             let weatherImageResource = self.weatherImageResource(weatherResult.weather)
