@@ -48,9 +48,9 @@ final class WeatherModelImpl: WeatherModel {
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let weatherResult = try decoder.decode(WeatherResult.self, from: weatherResultData)
                 
-                self.delegate?.handleWeather(.success(weatherResult))
+                self.delegate?.weatherModelDidFetchWeather(self, .success(weatherResult))
             } catch {
-                self.delegate?.handleWeather(.failure(error))
+                self.delegate?.weatherModelDidFetchWeather(self, .failure(error))
             }
         }
     }

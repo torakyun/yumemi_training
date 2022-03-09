@@ -12,15 +12,6 @@ protocol WeatherViewControllerDelegate: AnyObject {
     func weatherViewControllerDidPressClose(_ viewController: WeatherViewController)
 }
 
-protocol WeatherModel {
-    var delegate: WeatherModelDelegate? { get set }
-    func fetchWeather(at area: String, date: Date)
-}
-
-protocol WeatherModelDelegate: AnyObject {
-    func handleWeather(_ result: Result<WeatherResult, Error>)
-}
-
 final class WeatherViewController: UIViewController {
     
     @IBOutlet private weak var weatherImageView: UIImageView!
@@ -97,7 +88,7 @@ final class WeatherViewController: UIViewController {
 }
 
 extension WeatherViewController: WeatherModelDelegate {
-    func handleWeather(_ result: Result<WeatherResult, Error>) {
+    func weatherModelDidFetchWeather(_ weatherModelImpl: WeatherModelImpl, _ result: Result<WeatherResult, Error>) {
         // weatherResultをハンドリング
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
