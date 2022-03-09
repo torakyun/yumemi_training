@@ -19,6 +19,7 @@
 		B3D5259927D1B112002D7A4D /* WeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5259827D1B112002D7A4D /* WeatherModelImpl.swift */; };
 		B3D5259C27D1BD68002D7A4D /* WeatherViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */; };
 		B3D5259E27D1BEA3002D7A4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5259D27D1BEA3002D7A4D /* ViewController.swift */; };
+		B3D525A427D887C7002D7A4D /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D525A327D887C7002D7A4D /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		B3D5259827D1B112002D7A4D /* WeatherModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelImpl.swift; sourceTree = "<group>"; };
 		B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WeatherViewController.storyboard; sourceTree = "<group>"; };
 		B3D5259D27D1BEA3002D7A4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3D525A327D887C7002D7A4D /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				B3D5259827D1B112002D7A4D /* WeatherModelImpl.swift */,
+				B3D525A327D887C7002D7A4D /* WeatherModel.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */,
 				B3D5259E27D1BEA3002D7A4D /* ViewController.swift in Sources */,
 				B3D5259427D1AA93002D7A4D /* WeatherParameter.swift in Sources */,
+				B3D525A427D887C7002D7A4D /* WeatherModel.swift in Sources */,
 				B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
