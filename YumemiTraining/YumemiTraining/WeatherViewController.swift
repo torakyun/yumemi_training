@@ -48,29 +48,8 @@ final class WeatherViewController: UIViewController {
     
     private func loadWeather() {
         
-        do {
-            // WeatherParameterを作成
-            let weatherParameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
-            
-            // 天気予報をAPIから取得
-            let weatherResult = try WeatherAPI.fetchWeather(weatherParameter)
-            
-            // 天気の画像を設定
-            let weatherImageResource = self.weatherImageResource(weatherResult.weather)
-            self.weatherImageView.image = weatherImageResource.image
-            self.weatherImageView.tintColor = weatherImageResource.color
-            
-            //最高気温と最低気温を設定
-            self.minTempLabel.text = String(weatherResult.minTemp)
-            self.maxTempLabel.text = String(weatherResult.maxTemp)
-            
-        } catch YumemiWeatherError.invalidParameterError {
-            self.showErrorAlert(title: "天気情報の取得に失敗", message: "invalidParameterError")
-        } catch YumemiWeatherError.unknownError {
-            self.showErrorAlert(title: "天気情報の取得に失敗", message: "unknownError")
-        } catch {
-            print(error)
-        }
+        // WeatherParameterを作成
+        let weatherParameter = WeatherParameter(area: "tokyo", date: "2020-04-01T12:00:00+09:00")
         
         // 天気予報をAPIから取得
         self.activityIndicatorView.startAnimating()
