@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43BF2CE227DAD45400A5B64B /* SampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */; };
+		43BF2CE427DAD46900A5B64B /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BF2CE327DAD46900A5B64B /* SampleViewController.swift */; };
 		43DC39CC27DAD24E009497D3 /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */; };
 		B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */; };
 		B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleViewController.storyboard; sourceTree = "<group>"; };
+		43BF2CE327DAD46900A5B64B /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3AF310127BF99EE00A7C1DB /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,11 +80,13 @@
 				B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */,
 				B3D5259D27D1BEA3002D7A4D /* ViewController.swift */,
 				B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */,
+				43BF2CE327DAD46900A5B64B /* SampleViewController.swift */,
 				B3D5259A27D1B1D6002D7A4D /* APIs */,
 				B3D5259727D1B0B8002D7A4D /* Models */,
 				43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */,
 				B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */,
 				B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */,
+				43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */,
 				B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */,
 				B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */,
 				B3AF311227BF99EF00A7C1DB /* Info.plist */,
@@ -173,6 +179,7 @@
 				B3D5259C27D1BD68002D7A4D /* WeatherViewController.storyboard in Resources */,
 				B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */,
 				B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */,
+				43BF2CE227DAD45400A5B64B /* SampleViewController.storyboard in Resources */,
 				43DC39CC27DAD24E009497D3 /* RootTabBarController.storyboard in Resources */,
 				B3AF310C27BF99EE00A7C1DB /* ViewController.storyboard in Resources */,
 			);
@@ -193,6 +200,7 @@
 				B3D5259427D1AA93002D7A4D /* WeatherParameter.swift in Sources */,
 				B3D525A427D887C7002D7A4D /* WeatherModel.swift in Sources */,
 				B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */,
+				43BF2CE427DAD46900A5B64B /* SampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
