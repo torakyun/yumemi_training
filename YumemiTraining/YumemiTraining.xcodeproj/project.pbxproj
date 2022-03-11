@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43DC39CC27DAD24E009497D3 /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */; };
 		B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */; };
 		B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */; };
 		B3AF310927BF99EE00A7C1DB /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3AF310127BF99EE00A7C1DB /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */,
 				B3D5259A27D1B1D6002D7A4D /* APIs */,
 				B3D5259727D1B0B8002D7A4D /* Models */,
+				43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */,
 				B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */,
 				B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */,
 				B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */,
@@ -170,6 +173,7 @@
 				B3D5259C27D1BD68002D7A4D /* WeatherViewController.storyboard in Resources */,
 				B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */,
 				B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */,
+				43DC39CC27DAD24E009497D3 /* RootTabBarController.storyboard in Resources */,
 				B3AF310C27BF99EE00A7C1DB /* ViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,7 +346,7 @@
 				INFOPLIST_FILE = YumemiTraining/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = ViewController;
+				INFOPLIST_KEY_UIMainStoryboardFile = RootTabBarController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -370,7 +374,7 @@
 				INFOPLIST_FILE = YumemiTraining/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = ViewController;
+				INFOPLIST_KEY_UIMainStoryboardFile = RootTabBarController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
