@@ -19,17 +19,12 @@ final class ReactiveViewController: UIViewController {
     
     private func bind() {
         self.button.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
-            guard let self = self else { return }
-            do {
-                try self.showWeatherViewController()
-            } catch {
-                return
-            }
+            self?.showWeatherViewController()
         }
         
     }
     
-    private func showWeatherViewController() throws {
+    private func showWeatherViewController() {
         let storyboard = UIStoryboard(name: "ReactiveWeatherViewController", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController { (coder) in
             ReactiveWeatherViewController(coder: coder)
