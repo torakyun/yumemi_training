@@ -27,7 +27,7 @@ final class ReactiveViewController: UIViewController {
     private func showWeatherViewController() {
         let storyboard = UIStoryboard(name: "ReactiveWeatherViewController", bundle: nil)
         let viewController = storyboard.instantiateInitialViewController { (coder) in
-            ReactiveWeatherViewController(coder: coder)
+            ReactiveWeatherViewController(coder: coder, weatherModel: WeatherModelImpl())
         }
         guard let viewController = viewController else {
             fatalError()
