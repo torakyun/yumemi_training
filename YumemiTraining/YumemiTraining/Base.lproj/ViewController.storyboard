@@ -15,8 +15,22 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PEu-gG-u1b">
+                                <rect key="frame" x="148.5" y="413" width="117.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Show Weather"/>
+                                <connections>
+                                    <action selector="showWeatherButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PPi-w4-36D"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PEu-gG-u1b" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="a3M-eG-LXY"/>
+                            <constraint firstItem="PEu-gG-u1b" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="gmK-NY-T2F"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" image="sun.min" catalog="system" selectedImage="sun.min.fill" id="diG-99-Can"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
