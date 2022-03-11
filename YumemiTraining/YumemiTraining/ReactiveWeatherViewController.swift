@@ -14,7 +14,7 @@ protocol ReactiveWeatherViewControllerDelegate: AnyObject {
 }
 
 final class ReactiveWeatherViewController: UIViewController {
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet private weak var button: UIButton!
     
     weak var delegate: ReactiveWeatherViewControllerDelegate?
     
