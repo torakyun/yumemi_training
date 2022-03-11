@@ -8,13 +8,8 @@
 import UIKit
 
 final class ViewController: UIViewController {
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        do {
-            try self.showWeatherViewController()
-        } catch {
-            print(error)
-        }
+    @IBAction private func showWeatherButtonPressed(_ sender: Any) {
+        try? self.showWeatherViewController()
     }
     
     private func showWeatherViewController() throws {

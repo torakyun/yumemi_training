@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43BF2CE227DAD45400A5B64B /* SampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */; };
+		43BF2CE427DAD46900A5B64B /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BF2CE327DAD46900A5B64B /* SampleViewController.swift */; };
+		43BF2CE727DAD8F000A5B64B /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 43BF2CE627DAD8F000A5B64B /* ReactiveCocoa */; };
+		43DC39CC27DAD24E009497D3 /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */; };
 		B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */; };
 		B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */; };
 		B3AF310927BF99EE00A7C1DB /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */; };
-		B3AF310C27BF99EE00A7C1DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310A27BF99EE00A7C1DB /* Main.storyboard */; };
+		B3AF310C27BF99EE00A7C1DB /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */; };
 		B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */; };
 		B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */; };
 		B3AF311A27BF9A8600A7C1DB /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = B3AF311927BF9A8600A7C1DB /* YumemiWeather */; };
@@ -23,11 +27,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleViewController.storyboard; sourceTree = "<group>"; };
+		43BF2CE327DAD46900A5B64B /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
+		43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
 		B3AF310127BF99EE00A7C1DB /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		B3AF310B27BF99EE00A7C1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B3AF310B27BF99EE00A7C1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
 		B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3AF311027BF99EF00A7C1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3AF311227BF99EF00A7C1DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3AF311A27BF9A8600A7C1DB /* YumemiWeather in Frameworks */,
+				43BF2CE727DAD8F000A5B64B /* ReactiveCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +82,13 @@
 				B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */,
 				B3D5259D27D1BEA3002D7A4D /* ViewController.swift */,
 				B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */,
+				43BF2CE327DAD46900A5B64B /* SampleViewController.swift */,
 				B3D5259A27D1B1D6002D7A4D /* APIs */,
 				B3D5259727D1B0B8002D7A4D /* Models */,
-				B3AF310A27BF99EE00A7C1DB /* Main.storyboard */,
+				43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */,
+				B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */,
 				B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */,
+				43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */,
 				B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */,
 				B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */,
 				B3AF311227BF99EF00A7C1DB /* Info.plist */,
@@ -121,6 +132,7 @@
 			name = YumemiTraining;
 			packageProductDependencies = (
 				B3AF311927BF9A8600A7C1DB /* YumemiWeather */,
+				43BF2CE627DAD8F000A5B64B /* ReactiveCocoa */,
 			);
 			productName = YumemiTraining;
 			productReference = B3AF310127BF99EE00A7C1DB /* YumemiTraining.app */;
@@ -152,6 +164,7 @@
 			mainGroup = B3AF30F827BF99EE00A7C1DB;
 			packageReferences = (
 				B3AF311827BF9A8600A7C1DB /* XCRemoteSwiftPackageReference "ios-training" */,
+				43BF2CE527DAD8F000A5B64B /* XCRemoteSwiftPackageReference "ReactiveCocoa" */,
 			);
 			productRefGroup = B3AF310227BF99EE00A7C1DB /* Products */;
 			projectDirPath = "";
@@ -170,7 +183,9 @@
 				B3D5259C27D1BD68002D7A4D /* WeatherViewController.storyboard in Resources */,
 				B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */,
 				B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */,
-				B3AF310C27BF99EE00A7C1DB /* Main.storyboard in Resources */,
+				43BF2CE227DAD45400A5B64B /* SampleViewController.storyboard in Resources */,
+				43DC39CC27DAD24E009497D3 /* RootTabBarController.storyboard in Resources */,
+				B3AF310C27BF99EE00A7C1DB /* ViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,18 +204,19 @@
 				B3D5259427D1AA93002D7A4D /* WeatherParameter.swift in Sources */,
 				B3D525A427D887C7002D7A4D /* WeatherModel.swift in Sources */,
 				B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */,
+				43BF2CE427DAD46900A5B64B /* SampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B3AF310A27BF99EE00A7C1DB /* Main.storyboard */ = {
+		B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B3AF310B27BF99EE00A7C1DB /* Base */,
 			);
-			name = Main.storyboard;
+			name = ViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */ = {
@@ -342,7 +358,7 @@
 				INFOPLIST_FILE = YumemiTraining/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = RootTabBarController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -370,7 +386,7 @@
 				INFOPLIST_FILE = YumemiTraining/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = RootTabBarController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -410,6 +426,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		43BF2CE527DAD8F000A5B64B /* XCRemoteSwiftPackageReference "ReactiveCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveCocoa.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		B3AF311827BF9A8600A7C1DB /* XCRemoteSwiftPackageReference "ios-training" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yumemi-inc/ios-training.git";
@@ -421,6 +445,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		43BF2CE627DAD8F000A5B64B /* ReactiveCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43BF2CE527DAD8F000A5B64B /* XCRemoteSwiftPackageReference "ReactiveCocoa" */;
+			productName = ReactiveCocoa;
+		};
 		B3AF311927BF9A8600A7C1DB /* YumemiWeather */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B3AF311827BF9A8600A7C1DB /* XCRemoteSwiftPackageReference "ios-training" */;
