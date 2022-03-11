@@ -1,44 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w4v-bH-XBQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Reactive Weather View Controller-->
-        <scene sceneID="s0d-6b-0kx">
+        <scene sceneID="vNj-pa-AWn">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Y6W-OH-hqX" customClass="ReactiveWeatherViewController" customModule="YumemiTraining" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                <viewController modalPresentationStyle="fullScreen" id="w4v-bH-XBQ" customClass="ReactiveWeatherViewController" customModule="YumemiTraining" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n0V-Qw-svS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGz-zu-W4Q">
-                                <rect key="frame" x="177" y="437.5" width="60.5" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qEb-pc-LcV" userLabel="MainStackView">
+                                <rect key="frame" x="103.5" y="331.5" width="207" height="243"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pg9-JD-ju7">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="207"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="pg9-JD-ju7" secondAttribute="height" id="anS-lD-rxu"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="pdT-EL-HTF" userLabel="LabelStackView">
+                                        <rect key="frame" x="0.0" y="207" width="207" height="36"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMd-30-tTa">
+                                                <rect key="frame" x="0.0" y="0.0" width="103.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" name="Blue"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KN-rm-lwg">
+                                                <rect key="frame" x="103.5" y="0.0" width="103.5" height="36"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" name="Red"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qGF-er-Q9k" userLabel="ButtonStackView">
+                                <rect key="frame" x="103.5" y="654.5" width="207" height="32"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hLK-vs-0XQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="103.5" height="32"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Close">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="15"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1q-5X-eS2">
+                                        <rect key="frame" x="103.5" y="0.0" width="103.5" height="32"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Reload">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1iF-Y2-L31">
+                                <rect key="frame" x="197" y="604.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <viewLayoutGuide key="safeArea" id="Z8I-X5-wkR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vGz-zu-W4Q" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="CcO-1S-MbF"/>
-                            <constraint firstItem="vGz-zu-W4Q" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="IZu-IZ-RW5"/>
+                            <constraint firstItem="qGF-er-Q9k" firstAttribute="centerX" secondItem="Z8I-X5-wkR" secondAttribute="centerX" id="0Fv-7p-0Zz"/>
+                            <constraint firstItem="1iF-Y2-L31" firstAttribute="top" secondItem="qEb-pc-LcV" secondAttribute="bottom" constant="30" id="3L3-Yx-Gne"/>
+                            <constraint firstItem="qEb-pc-LcV" firstAttribute="centerY" secondItem="Z8I-X5-wkR" secondAttribute="centerY" id="J0T-mv-yay"/>
+                            <constraint firstItem="qEb-pc-LcV" firstAttribute="width" secondItem="n0V-Qw-svS" secondAttribute="width" multiplier="0.5" id="Pws-3R-cYY"/>
+                            <constraint firstItem="qEb-pc-LcV" firstAttribute="centerX" secondItem="Z8I-X5-wkR" secondAttribute="centerX" id="WF4-3J-gyC"/>
+                            <constraint firstItem="qGF-er-Q9k" firstAttribute="width" secondItem="qEb-pc-LcV" secondAttribute="width" id="oe1-iE-Qg9"/>
+                            <constraint firstItem="1iF-Y2-L31" firstAttribute="centerX" secondItem="Z8I-X5-wkR" secondAttribute="centerX" id="ykp-78-dhB"/>
+                            <constraint firstItem="qGF-er-Q9k" firstAttribute="top" secondItem="qEb-pc-LcV" secondAttribute="bottom" constant="80" id="yp9-Hc-jSn"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="vGz-zu-W4Q" id="GBv-wu-o5E"/>
+                        <outlet property="activityIndicatorView" destination="1iF-Y2-L31" id="9HL-3u-RHO"/>
+                        <outlet property="closeButton" destination="hLK-vs-0XQ" id="c2Q-Ax-ZaR"/>
+                        <outlet property="maxTempLabel" destination="1KN-rm-lwg" id="rBB-lV-6t1"/>
+                        <outlet property="minTempLabel" destination="PMd-30-tTa" id="4ZF-ht-7mU"/>
+                        <outlet property="reloadButton" destination="H1q-5X-eS2" id="06b-g0-k9c"/>
+                        <outlet property="weatherImageView" destination="pg9-JD-ju7" id="S69-Du-v31"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nve-kd-DIl" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="52"/>
+            <point key="canvasLocation" x="18.840579710144929" y="84.375"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="Blue">
+            <color red="0.20499999821186066" green="0.53700000047683716" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Red">
+            <color red="1" green="0.210999995470047" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
