@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		43BF2CE227DAD45400A5B64B /* SampleViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */; };
 		43BF2CE427DAD46900A5B64B /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BF2CE327DAD46900A5B64B /* SampleViewController.swift */; };
+		43BF2CE727DAD8F000A5B64B /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 43BF2CE627DAD8F000A5B64B /* ReactiveCocoa */; };
 		43DC39CC27DAD24E009497D3 /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */; };
 		B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */; };
 		B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3AF311A27BF9A8600A7C1DB /* YumemiWeather in Frameworks */,
+				43BF2CE727DAD8F000A5B64B /* ReactiveCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +132,7 @@
 			name = YumemiTraining;
 			packageProductDependencies = (
 				B3AF311927BF9A8600A7C1DB /* YumemiWeather */,
+				43BF2CE627DAD8F000A5B64B /* ReactiveCocoa */,
 			);
 			productName = YumemiTraining;
 			productReference = B3AF310127BF99EE00A7C1DB /* YumemiTraining.app */;
@@ -161,6 +164,7 @@
 			mainGroup = B3AF30F827BF99EE00A7C1DB;
 			packageReferences = (
 				B3AF311827BF9A8600A7C1DB /* XCRemoteSwiftPackageReference "ios-training" */,
+				43BF2CE527DAD8F000A5B64B /* XCRemoteSwiftPackageReference "ReactiveCocoa" */,
 			);
 			productRefGroup = B3AF310227BF99EE00A7C1DB /* Products */;
 			projectDirPath = "";
@@ -422,6 +426,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		43BF2CE527DAD8F000A5B64B /* XCRemoteSwiftPackageReference "ReactiveCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveCocoa.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		B3AF311827BF9A8600A7C1DB /* XCRemoteSwiftPackageReference "ios-training" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yumemi-inc/ios-training.git";
@@ -433,6 +445,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		43BF2CE627DAD8F000A5B64B /* ReactiveCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43BF2CE527DAD8F000A5B64B /* XCRemoteSwiftPackageReference "ReactiveCocoa" */;
+			productName = ReactiveCocoa;
+		};
 		B3AF311927BF9A8600A7C1DB /* YumemiWeather */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B3AF311827BF9A8600A7C1DB /* XCRemoteSwiftPackageReference "ios-training" */;

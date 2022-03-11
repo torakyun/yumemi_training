@@ -1,16 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "YumemiWeather",
-        "repositoryURL": "https://github.com/yumemi-inc/ios-training.git",
-        "state": {
-          "branch": "main",
-          "revision": "daf9dbba07745c608d850b12930cbb37b44cef39",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "ios-training",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yumemi-inc/ios-training.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "daf9dbba07745c608d850b12930cbb37b44cef39"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "reactivecocoa",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveCocoa/ReactiveCocoa.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "8a5b07b18c6abb8e12fb845bf742675dc4914ed8"
+      }
+    },
+    {
+      "identity" : "reactiveswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveCocoa/ReactiveSwift",
+      "state" : {
+        "revision" : "efb2f0a6f6c8739cce8fb14148a5bd3c83f2f91d",
+        "version" : "7.0.0"
+      }
+    }
+  ],
+  "version" : 2
 }
