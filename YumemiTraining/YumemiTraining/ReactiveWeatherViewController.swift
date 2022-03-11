@@ -40,23 +40,19 @@ final class ReactiveWeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(foreground(notification:)),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
         self.bind()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.loadWeather()
-    }
-    
-    @objc private func foreground(notification: Notification) {
-        self.loadWeather()
-    }
-
     private func bind() {
+        NotificationCenter.default.reactive
+            .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
+            .observeValues { [weak self] _ in
+                self?.loadWeather()
+            }
+        
+        self.reactive.viewDidAppear.observeValues { [weak self] _ in
+            self?.loadWeather()
+        }
         self.closeButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             guard let self = self else { return }
             self.delegate?.reactiveWeatherViewControllerDidPressClose(self)
