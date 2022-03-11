@@ -10,7 +10,7 @@
 		B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */; };
 		B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */; };
 		B3AF310927BF99EE00A7C1DB /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */; };
-		B3AF310C27BF99EE00A7C1DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310A27BF99EE00A7C1DB /* Main.storyboard */; };
+		B3AF310C27BF99EE00A7C1DB /* ViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */; };
 		B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */; };
 		B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */; };
 		B3AF311A27BF9A8600A7C1DB /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = B3AF311927BF9A8600A7C1DB /* YumemiWeather */; };
@@ -27,7 +27,7 @@
 		B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
-		B3AF310B27BF99EE00A7C1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B3AF310B27BF99EE00A7C1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ViewController.storyboard; sourceTree = "<group>"; };
 		B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3AF311027BF99EF00A7C1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3AF311227BF99EF00A7C1DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,7 +76,7 @@
 				B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */,
 				B3D5259A27D1B1D6002D7A4D /* APIs */,
 				B3D5259727D1B0B8002D7A4D /* Models */,
-				B3AF310A27BF99EE00A7C1DB /* Main.storyboard */,
+				B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */,
 				B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */,
 				B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */,
 				B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */,
@@ -170,7 +170,7 @@
 				B3D5259C27D1BD68002D7A4D /* WeatherViewController.storyboard in Resources */,
 				B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */,
 				B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */,
-				B3AF310C27BF99EE00A7C1DB /* Main.storyboard in Resources */,
+				B3AF310C27BF99EE00A7C1DB /* ViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,12 +195,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B3AF310A27BF99EE00A7C1DB /* Main.storyboard */ = {
+		B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B3AF310B27BF99EE00A7C1DB /* Base */,
 			);
-			name = Main.storyboard;
+			name = ViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */ = {
@@ -342,7 +342,7 @@
 				INFOPLIST_FILE = YumemiTraining/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = ViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -370,7 +370,7 @@
 				INFOPLIST_FILE = YumemiTraining/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = ViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
