@@ -15,12 +15,12 @@ protocol ReactiveWeatherViewControllerDelegate: AnyObject {
 }
 
 final class ReactiveWeatherViewController: UIViewController {
-    @IBOutlet weak var weatherImageView: UIImageView!
-    @IBOutlet weak var minTempLabel: UILabel!
-    @IBOutlet weak var maxTempLabel: UILabel!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet private weak var weatherImageView: UIImageView!
+    @IBOutlet private weak var minTempLabel: UILabel!
+    @IBOutlet private weak var maxTempLabel: UILabel!
+    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var reloadButton: UIButton!
     
     weak var delegate: ReactiveWeatherViewControllerDelegate?
     private let weatherModel: WeatherModel
