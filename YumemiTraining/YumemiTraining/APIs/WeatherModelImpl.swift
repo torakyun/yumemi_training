@@ -70,7 +70,7 @@ final class WeatherModelImpl: WeatherModel {
                     guard let weatherParameterJsonStr = String(data: weatherParameterData, encoding: .utf8) else {
                         throw FetchWeatherError.decodeDataFailed
                     }
-                    let weatherResultJsonStr = try YumemiWeather.fetchWeather(weatherParameterJsonStr)
+                    let weatherResultJsonStr = try YumemiWeather.syncFetchWeather(weatherParameterJsonStr)
                     guard let weatherResultData = weatherResultJsonStr.data(using: String.Encoding.utf8) else {
                         throw FetchWeatherError.encodeDataFailed
                     }
