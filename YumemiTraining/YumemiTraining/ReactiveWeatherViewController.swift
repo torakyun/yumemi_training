@@ -15,12 +15,12 @@ protocol ReactiveWeatherViewControllerDelegate: AnyObject {
 }
 
 final class ReactiveWeatherViewController: UIViewController {
-    @IBOutlet weak var weatherImageView: UIImageView!
-    @IBOutlet weak var minTempLabel: UILabel!
-    @IBOutlet weak var maxTempLabel: UILabel!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet private weak var weatherImageView: UIImageView!
+    @IBOutlet private weak var minTempLabel: UILabel!
+    @IBOutlet private weak var maxTempLabel: UILabel!
+    @IBOutlet private weak var activityIndicatorView: UIActivityIndicatorView!
+    @IBOutlet private weak var closeButton: UIButton!
+    @IBOutlet private weak var reloadButton: UIButton!
     
     weak var delegate: ReactiveWeatherViewControllerDelegate?
     private let weatherModel: WeatherModel
@@ -40,23 +40,19 @@ final class ReactiveWeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(foreground(notification:)),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
         self.bind()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.loadWeather()
-    }
-    
-    @objc private func foreground(notification: Notification) {
-        self.loadWeather()
-    }
-
     private func bind() {
+        NotificationCenter.default.reactive
+            .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
+            .observeValues { [weak self] _ in
+                self?.loadWeather()
+            }
+        
+        self.reactive.viewDidAppear.observeValues { [weak self] _ in
+            self?.loadWeather()
+        }
         self.closeButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             guard let self = self else { return }
             self.delegate?.reactiveWeatherViewControllerDidPressClose(self)
