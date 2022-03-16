@@ -100,8 +100,8 @@
 		B3C1710F27E1E50E00C7EA06 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B3C1711027E1E6E500C7EA06 /* ReactiveWeather */,
 				43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */,
+				B3C1711027E1E6E500C7EA06 /* ReactiveWeather */,
 				B3C1711127E1E70400C7EA06 /* Sample */,
 				B3C1711227E1E72300C7EA06 /* Weather */,
 			);
