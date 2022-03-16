@@ -93,8 +93,8 @@
 				B3D525AC27DAFD5E002D7A4D /* ReactiveWeatherViewController.swift */,
 				B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */,
 				43BF2CE327DAD46900A5B64B /* SampleViewController.swift */,
-				B3D5259A27D1B1D6002D7A4D /* APIs */,
-				B3D5259727D1B0B8002D7A4D /* Models */,
+				B3D5259A27D1B1D6002D7A4D /* Model */,
+				B3D5259727D1B0B8002D7A4D /* storyboard */,
 				43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */,
 				B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */,
 				B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */,
@@ -108,22 +108,22 @@
 			path = YumemiTraining;
 			sourceTree = "<group>";
 		};
-		B3D5259727D1B0B8002D7A4D /* Models */ = {
+		B3D5259727D1B0B8002D7A4D /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
 				B3D5259527D1AAF0002D7A4D /* WeatherResult.swift */,
 				B3D5259327D1AA93002D7A4D /* WeatherParameter.swift */,
 			);
-			path = Models;
+			path = storyboard;
 			sourceTree = "<group>";
 		};
-		B3D5259A27D1B1D6002D7A4D /* APIs */ = {
+		B3D5259A27D1B1D6002D7A4D /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				B3D5259827D1B112002D7A4D /* WeatherModelImpl.swift */,
 				B3D525A327D887C7002D7A4D /* WeatherModel.swift */,
 			);
-			path = APIs;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
