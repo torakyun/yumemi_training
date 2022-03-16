@@ -30,7 +30,7 @@ final class WeatherModelImpl: WeatherModel {
         return parameterJsonStr
     }
     
-    private func decodeJSON<T: Decodable>(to type: T.Type, _ jsonStr: String) throws -> T {
+    private func decodeJSON<T: Decodable>(_ jsonStr: String) throws -> T {
         // Dataにエンコード
         guard let data = jsonStr.data(using: String.Encoding.utf8) else {
             throw FetchWeatherError.encodeDataFailed
@@ -39,7 +39,7 @@ final class WeatherModelImpl: WeatherModel {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         // Decodableにデコード
-        return try decoder.decode(type, from: data)
+        return try decoder.decode(T.self, from: data)
     }
     
     func fetchWeather(at area: String, date: Date, completion: @escaping (Result<WeatherResult, Error>) -> Void) {
@@ -54,7 +54,7 @@ final class WeatherModelImpl: WeatherModel {
                 // 天気予報をAPIから取得
                 let weatherResultJsonStr = try YumemiWeather.syncFetchWeather(weatherParameterJsonStr)
                 // WeatherResultにデコード
-                let weatherResult =  try self.decodeJSON(to: WeatherResult.self, weatherResultJsonStr)
+                let weatherResult: WeatherResult =  try self.decodeJSON(weatherResultJsonStr)
                 
                 completion(.success(weatherResult))
             } catch {
@@ -79,7 +79,7 @@ final class WeatherModelImpl: WeatherModel {
                     // 天気予報をAPIから取得
                     let weatherResultJsonStr = try YumemiWeather.syncFetchWeather(weatherParameterJsonStr)
                     // WeatherResultにデコード
-                    let weatherResult =  try self.decodeJSON(to: WeatherResult.self, weatherResultJsonStr)
+                    let weatherResult: WeatherResult =  try self.decodeJSON(weatherResultJsonStr)
                     
                     observer.send(value: weatherResult)
                     observer.sendCompleted()
