@@ -68,7 +68,8 @@ final class ReactiveWeatherViewController: UIViewController {
             .observe(on: UIScheduler())
             .startWithResult { [weak self] result in
                 self?.activityIndicatorView.stopAnimating()
-                self?.handleWeather(result)}
+                self?.handleWeather(result)
+            }
     }
     
     private func handleWeather(_ result: Result<WeatherResult, Error>) {
