@@ -64,8 +64,7 @@ final class ReactiveWeatherViewController: UIViewController {
     
     private func loadWeather() {
         self.activityIndicatorView.startAnimating()
-        let weatherSignalProducer = self.weatherModel.fetchWeather(at: "tokyo", date: Date())
-        weatherSignalProducer.startWithResult { [weak self] result in
+        self.weatherModel.fetchWeather(at: "tokyo", date: Date()).startWithResult { [weak self] result in
             DispatchQueue.main.async {
                 self?.activityIndicatorView.stopAnimating()
                 self?.handleWeather(result)
