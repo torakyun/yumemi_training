@@ -64,12 +64,11 @@ final class ReactiveWeatherViewController: UIViewController {
     
     private func loadWeather() {
         self.activityIndicatorView.startAnimating()
-        self.weatherModel.fetchWeather(at: "tokyo", date: Date()).startWithResult { [weak self] result in
-            DispatchQueue.main.async {
+        self.weatherModel.fetchWeather(at: "tokyo", date: Date())
+            .observe(on: UIScheduler())
+            .startWithResult { [weak self] result in
                 self?.activityIndicatorView.stopAnimating()
-                self?.handleWeather(result)
-            }
-        }
+                self?.handleWeather(result)}
     }
     
     private func handleWeather(_ result: Result<WeatherResult, Error>) {
