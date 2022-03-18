@@ -88,19 +88,8 @@
 			children = (
 				B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */,
 				B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */,
-				B3D5259D27D1BEA3002D7A4D /* ViewController.swift */,
-				B3D525A827DAF4B9002D7A4D /* ReactiveViewController.swift */,
-				B3D525AC27DAFD5E002D7A4D /* ReactiveWeatherViewController.swift */,
-				B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */,
-				43BF2CE327DAD46900A5B64B /* SampleViewController.swift */,
-				B3D5259A27D1B1D6002D7A4D /* APIs */,
-				B3D5259727D1B0B8002D7A4D /* Models */,
-				43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */,
-				B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */,
-				B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */,
-				B3D525A627DAEB45002D7A4D /* ReactiveViewController.storyboard */,
-				B3D525AA27DAFD3C002D7A4D /* ReactiveWeatherViewController.storyboard */,
-				43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */,
+				B3C1710F27E1E50E00C7EA06 /* Controllers */,
+				B3D5259A27D1B1D6002D7A4D /* Models */,
 				B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */,
 				B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */,
 				B3AF311227BF99EF00A7C1DB /* Info.plist */,
@@ -108,22 +97,57 @@
 			path = YumemiTraining;
 			sourceTree = "<group>";
 		};
-		B3D5259727D1B0B8002D7A4D /* Models */ = {
+		B3C1710F27E1E50E00C7EA06 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B3D5259527D1AAF0002D7A4D /* WeatherResult.swift */,
-				B3D5259327D1AA93002D7A4D /* WeatherParameter.swift */,
+				43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */,
+				B3C1711027E1E6E500C7EA06 /* ReactiveWeather */,
+				B3C1711127E1E70400C7EA06 /* Sample */,
+				B3C1711227E1E72300C7EA06 /* Weather */,
 			);
-			path = Models;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		B3D5259A27D1B1D6002D7A4D /* APIs */ = {
+		B3C1711027E1E6E500C7EA06 /* ReactiveWeather */ = {
 			isa = PBXGroup;
 			children = (
-				B3D5259827D1B112002D7A4D /* WeatherModelImpl.swift */,
-				B3D525A327D887C7002D7A4D /* WeatherModel.swift */,
+				B3D525A627DAEB45002D7A4D /* ReactiveViewController.storyboard */,
+				B3D525A827DAF4B9002D7A4D /* ReactiveViewController.swift */,
+				B3D525AA27DAFD3C002D7A4D /* ReactiveWeatherViewController.storyboard */,
+				B3D525AC27DAFD5E002D7A4D /* ReactiveWeatherViewController.swift */,
 			);
-			path = APIs;
+			path = ReactiveWeather;
+			sourceTree = "<group>";
+		};
+		B3C1711127E1E70400C7EA06 /* Sample */ = {
+			isa = PBXGroup;
+			children = (
+				43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */,
+				43BF2CE327DAD46900A5B64B /* SampleViewController.swift */,
+			);
+			path = Sample;
+			sourceTree = "<group>";
+		};
+		B3C1711227E1E72300C7EA06 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				B3AF310A27BF99EE00A7C1DB /* ViewController.storyboard */,
+				B3D5259D27D1BEA3002D7A4D /* ViewController.swift */,
+				B3D5259B27D1BD68002D7A4D /* WeatherViewController.storyboard */,
+				B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		B3D5259A27D1B1D6002D7A4D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B3D525A327D887C7002D7A4D /* WeatherModel.swift */,
+				B3D5259827D1B112002D7A4D /* WeatherModelImpl.swift */,
+				B3D5259327D1AA93002D7A4D /* WeatherParameter.swift */,
+				B3D5259527D1AAF0002D7A4D /* WeatherResult.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

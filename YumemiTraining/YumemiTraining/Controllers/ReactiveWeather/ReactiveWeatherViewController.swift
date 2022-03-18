@@ -44,32 +44,45 @@ final class ReactiveWeatherViewController: UIViewController {
     }
     
     private func bind() {
+        // 天気データに対するオブザーバーの定義
+        self.weatherModel.fetchWeatherAction.values
+            .observe(on: UIScheduler())
+            .observeValues { [weak self] data in
+                self?.activityIndicatorView.stopAnimating()
+                self?.handleWeather(.success(data))
+            }
+        self.weatherModel.fetchWeatherAction.errors
+            .observe(on: UIScheduler())
+            .observeValues { [weak self] error in
+                self?.activityIndicatorView.stopAnimating()
+                self?.handleWeather(.failure(error))
+            }
+        // リロードを行う処理
+        let willReloadSignal = Signal.merge(
+            // フォアグラウンドに戻った
+            NotificationCenter.default.reactive
+                .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
+                .map(value: true),
+            // viewDidAppearが実行された
+            self.reactive.viewDidAppear.map(value: true),
+            // Reloadボタンが押された
+            self.reloadButton.reactive.controlEvents(.touchUpInside).map(value: true)
+        )
+        self.activityIndicatorView.reactive.isAnimating <~ willReloadSignal
+        self.weatherModel.fetchWeatherAction <~ willReloadSignal.map(value: (at: "tokyo", date: Date()))
+        
+        // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive
             .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
             .observeValues { [weak self] _ in
-                self?.loadWeather()
+                self?.presentedViewController?.dismiss(animated: false)
             }
         
-        self.reactive.viewDidAppear.observeValues { [weak self] _ in
-            self?.loadWeather()
-        }
+        // Closeボタンが押された時の処理
         self.closeButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             guard let self = self else { return }
             self.delegate?.reactiveWeatherViewControllerDidPressClose(self)
         }
-        self.reloadButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
-            self?.loadWeather()
-        }
-    }
-    
-    private func loadWeather() {
-        self.activityIndicatorView.startAnimating()
-        self.weatherModel.fetchWeather(at: "tokyo", date: Date())
-            .observe(on: UIScheduler())
-            .startWithResult { [weak self] result in
-                self?.activityIndicatorView.stopAnimating()
-                self?.handleWeather(result)
-            }
     }
     
     private func handleWeather(_ result: Result<WeatherResult, Error>) {

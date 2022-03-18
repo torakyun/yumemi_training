@@ -17,6 +17,11 @@ final class WeatherModelImpl: WeatherModel {
         return dateFormatter
     }()
     
+    lazy var fetchWeatherAction = Action<(at: String, date: Date), WeatherResult, Error> { [weak self] (area, date) in
+        guard let self = self else { return .empty }
+        return self.fetchWeather(at: area, date: date)
+    }
+    
     private func encodeToJSON<T: Encodable>(parameter: T) throws -> String {
         // エンコーダの作成
         let encoder = JSONEncoder()
