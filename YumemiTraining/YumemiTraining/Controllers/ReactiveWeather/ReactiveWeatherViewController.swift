@@ -71,7 +71,7 @@ final class ReactiveWeatherViewController: UIViewController {
         self.activityIndicatorView.reactive.isAnimating <~ willReloadSignal
         self.weatherModel.fetchWeatherAction <~ willReloadSignal.map(value: (at: "tokyo", date: Date()))
         
-        // フォアグラウンドに戻った時の処理
+        // フォアグラウンドに戻った時にUIAlertControllerを閉じる
         NotificationCenter.default.reactive
             .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
             .observeValues { [weak self] _ in
