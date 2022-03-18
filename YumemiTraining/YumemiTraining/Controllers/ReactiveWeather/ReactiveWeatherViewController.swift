@@ -69,10 +69,10 @@ final class ReactiveWeatherViewController: UIViewController {
         self.weatherModel.fetchWeatherAction <~ NotificationCenter.default.reactive
             .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
             .map(value: (at: "tokyo", date: Date()))
-        // ViewDidAppearが実行された時の処理
+        // viewDidAppearが実行された時の処理
         self.activityIndicatorView.reactive.isAnimating <~ self.reactive.viewDidAppear.map(value: true)
         self.weatherModel.fetchWeatherAction <~ self.reactive.viewDidAppear.map(value: (at: "tokyo", date: Date()))
-        // Closeボタンが押えた時の処理
+        // Closeボタンが押された時の処理
         self.closeButton.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             guard let self = self else { return }
             self.delegate?.reactiveWeatherViewControllerDidPressClose(self)
