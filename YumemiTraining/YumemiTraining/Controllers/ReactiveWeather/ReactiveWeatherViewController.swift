@@ -75,7 +75,7 @@ final class ReactiveWeatherViewController: UIViewController {
         NotificationCenter.default.reactive
             .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
             .observeValues { [weak self] _ in
-                self?.dismiss(animated: false)
+                self?.presentedViewController?.dismiss(animated: false)
             }
         
         // Closeボタンが押された時の処理
