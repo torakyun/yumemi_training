@@ -69,8 +69,8 @@ final class ReactiveWeatherViewController: UIViewController {
             // Reloadボタンが押された
             self.reloadButton.reactive.controlEvents(.touchUpInside).map(value: true)
         )
+        self.activityIndicatorView.reactive.isAnimating <~ willReloadSignal
         self.weatherModel.fetchWeatherAction <~ willReloadSignal.map(value: (at: "tokyo", date: Date()))
-        self.activityIndicatorView.reactive.isAnimating <~ self.weatherModel.fetchWeatherAction.isExecuting
         
         // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive
