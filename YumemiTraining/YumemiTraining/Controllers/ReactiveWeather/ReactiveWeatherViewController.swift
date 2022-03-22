@@ -57,6 +57,7 @@ final class ReactiveWeatherViewController: UIViewController {
                 self?.activityIndicatorView.stopAnimating()
                 self?.handleWeather(.failure(error))
             }
+        
         // リロードを行う処理
         let willReloadSignal = Signal.merge(
             // フォアグラウンドに戻った
