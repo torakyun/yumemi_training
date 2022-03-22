@@ -48,13 +48,11 @@ final class ReactiveWeatherViewController: UIViewController {
         self.weatherModel.fetchWeatherAction.values
             .observe(on: UIScheduler())
             .observeValues { [weak self] data in
-                self?.activityIndicatorView.stopAnimating()
                 self?.handleWeather(.success(data))
             }
         self.weatherModel.fetchWeatherAction.errors
             .observe(on: UIScheduler())
             .observeValues { [weak self] error in
-                self?.activityIndicatorView.stopAnimating()
                 self?.handleWeather(.failure(error))
             }
         
@@ -69,8 +67,8 @@ final class ReactiveWeatherViewController: UIViewController {
             // Reloadボタンが押された
             self.reloadButton.reactive.controlEvents(.touchUpInside).map(value: true)
         )
-        self.activityIndicatorView.reactive.isAnimating <~ willReloadSignal
         self.weatherModel.fetchWeatherAction <~ willReloadSignal.map(value: (at: "tokyo", date: Date()))
+        self.activityIndicatorView.reactive.isAnimating <~ self.weatherModel.fetchWeatherAction.isExecuting
         
         // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive
