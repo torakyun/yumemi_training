@@ -61,11 +61,11 @@ final class ReactiveWeatherViewController: UIViewController {
             // フォアグラウンドに戻った
             NotificationCenter.default.reactive
                 .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
-                .map(value: true),
+                .map { _ in },
             // viewDidAppearが実行された
-            self.reactive.viewDidAppear.map(value: true),
+            self.reactive.viewDidAppear.map { _ in },
             // Reloadボタンが押された
-            self.reloadButton.reactive.controlEvents(.touchUpInside).map(value: true)
+            self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
         )
         self.weatherModel.fetchWeatherAction <~ willReloadSignal.map(value: (at: "tokyo", date: Date()))
         self.activityIndicatorView.reactive.isAnimating <~ self.weatherModel.fetchWeatherAction.isExecuting
