@@ -121,6 +121,8 @@ final class ReactiveWeatherViewController: UIViewController {
     
 }
 
+// MARK: - Reactive
+
 private extension Reactive where Base == ReactiveWeatherViewController {
     var updateWeather: BindingTarget<WeatherResult> {
         self.makeBindingTarget { (base: ReactiveWeatherViewController, weatherResult: WeatherResult) in
