@@ -48,28 +48,27 @@ final class ReactiveWeatherViewController: UIViewController {
         self.weatherModel.fetchWeatherAction.values
             .observe(on: UIScheduler())
             .observeValues { [weak self] data in
-                self?.activityIndicatorView.stopAnimating()
                 self?.handleWeather(.success(data))
             }
         self.weatherModel.fetchWeatherAction.errors
             .observe(on: UIScheduler())
             .observeValues { [weak self] error in
-                self?.activityIndicatorView.stopAnimating()
                 self?.handleWeather(.failure(error))
             }
+        
         // リロードを行う処理
         let willReloadSignal = Signal.merge(
             // フォアグラウンドに戻った
             NotificationCenter.default.reactive
                 .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
-                .map(value: true),
+                .map { _ in },
             // viewDidAppearが実行された
-            self.reactive.viewDidAppear.map(value: true),
+            self.reactive.viewDidAppear,
             // Reloadボタンが押された
-            self.reloadButton.reactive.controlEvents(.touchUpInside).map(value: true)
+            self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
         )
-        self.activityIndicatorView.reactive.isAnimating <~ willReloadSignal
         self.weatherModel.fetchWeatherAction <~ willReloadSignal.map(value: (at: "tokyo", date: Date()))
+        self.activityIndicatorView.reactive.isAnimating <~ self.weatherModel.fetchWeatherAction.isExecuting
         
         // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive
