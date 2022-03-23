@@ -63,7 +63,7 @@ final class ReactiveWeatherViewController: UIViewController {
                 .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
                 .map { _ in },
             // viewDidAppearが実行された
-            self.reactive.viewDidAppear.map { _ in },
+            self.reactive.viewDidAppear,
             // Reloadボタンが押された
             self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
         )
