@@ -44,19 +44,8 @@ final class ReactiveWeatherViewController: UIViewController {
     }
     
     private func bind() {
-        // 天気データに対するオブザーバーの定義
-        self.weatherModel.fetchWeatherAction.values
-            .observe(on: UIScheduler())
-            .observeValues { [weak self] data in
-                self?.handleWeather(.success(data))
-            }
-        self.weatherModel.fetchWeatherAction.errors
-            .observe(on: UIScheduler())
-            .observeValues { [weak self] error in
-                self?.handleWeather(.failure(error))
-            }
-        
-        // リロードを行う処理
+        // 天気情報のリロード
+        // リロードを行うシグナル
         let willReloadSignal = Signal.merge(
             // フォアグラウンドに戻った
             NotificationCenter.default.reactive
@@ -67,8 +56,12 @@ final class ReactiveWeatherViewController: UIViewController {
             // Reloadボタンが押された
             self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
         )
+        // APIからデータを取得
         self.weatherModel.fetchWeatherAction <~ willReloadSignal.map(value: (at: "tokyo", date: Date()))
         self.activityIndicatorView.reactive.isAnimating <~ self.weatherModel.fetchWeatherAction.isExecuting
+        // Viewに反映
+        self.reactive.updateWeather <~ self.weatherModel.fetchWeatherAction.values.observe(on: UIScheduler())
+        self.reactive.showError <~ self.weatherModel.fetchWeatherAction.errors.observe(on: UIScheduler())
         
         // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive
@@ -84,31 +77,26 @@ final class ReactiveWeatherViewController: UIViewController {
         }
     }
     
-    private func handleWeather(_ result: Result<WeatherResult, Error>) {
-        // weatherResultをハンドリング
-        switch result {
-        case let .success(data):
+    fileprivate func updateWeather(from weather: WeatherResult) {
             // 天気の画像を設定
-            let weatherImageResource = self.weatherImageResource(data.weather)
+            let weatherImageResource = self.weatherImageResource(weather.weather)
             self.weatherImageView.image = weatherImageResource.image
             self.weatherImageView.tintColor = weatherImageResource.color
-            //最高気温と最低気温を設定
-            self.minTempLabel.text = String(data.minTemp)
-            self.maxTempLabel.text = String(data.maxTemp)
-        case let .failure(error):
-            let message: String
-            switch error {
-            case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-                message = "JSONエンコードに失敗"
-            case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-                message = "JSONデコードに失敗"
-            case YumemiWeatherError.unknownError:
-                message = "天気情報の取得に失敗"
-            default:
-                message = "エラー発生"
-            }
-            self.showErrorAlert(title: "Error", message: message)
+    }
+    
+    fileprivate func showError(_ error: Error) {
+        let message: String
+        switch error {
+        case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+            message = "JSONエンコードに失敗"
+        case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+            message = "JSONデコードに失敗"
+        case YumemiWeatherError.unknownError:
+            message = "天気情報の取得に失敗"
+        default:
+            message = "エラー発生"
         }
+        self.showErrorAlert(title: "Error", message: message)
     }
     
     private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
@@ -131,4 +119,17 @@ final class ReactiveWeatherViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
+}
+
+private extension Reactive where Base == ReactiveWeatherViewController {
+    var updateWeather: BindingTarget<WeatherResult> {
+        self.makeBindingTarget { (base: ReactiveWeatherViewController, weatherResult: WeatherResult) in
+            base.updateWeather(from: weatherResult)
+        }
+    }
+    var showError: BindingTarget<Error> {
+        self.makeBindingTarget { (base: ReactiveWeatherViewController, error: Error) in
+            base.showError(error)
+        }
+    }
 }
