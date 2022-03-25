@@ -60,8 +60,8 @@ final class ReactiveWeatherViewController: UIViewController {
         self.weatherModel.fetchWeatherAction <~ willReloadSignal.map(value: (at: "tokyo", date: Date()))
         self.activityIndicatorView.reactive.isAnimating <~ self.weatherModel.fetchWeatherAction.isExecuting
         // Viewに反映
-        self.reactive.updateWeather <~ self.weatherModel.fetchWeatherAction.values.observe(on: UIScheduler())
-        self.reactive.showError <~ self.weatherModel.fetchWeatherAction.errors.observe(on: UIScheduler())
+        self.reactive.updateWeather <~ self.weatherModel.fetchWeatherAction.values
+        self.reactive.showError <~ self.weatherModel.fetchWeatherAction.errors
         
         // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive
