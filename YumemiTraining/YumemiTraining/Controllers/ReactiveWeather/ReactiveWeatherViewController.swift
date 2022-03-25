@@ -78,13 +78,13 @@ final class ReactiveWeatherViewController: UIViewController {
     }
     
     fileprivate func updateWeather(from weather: WeatherResult) {
-            // 天気の画像を設定
-            let weatherImageResource = self.weatherImageResource(weather.weather)
-            self.weatherImageView.image = weatherImageResource.image
-            self.weatherImageView.tintColor = weatherImageResource.color
-            //最高気温と最低気温を設定
-            self.minTempLabel.text = String(weather.minTemp)
-            self.maxTempLabel.text = String(weather.maxTemp)
+        // 天気の画像を設定
+        let weatherImageResource = self.weatherImageResource(weather.weather)
+        self.weatherImageView.image = weatherImageResource.image
+        self.weatherImageView.tintColor = weatherImageResource.color
+        //最高気温と最低気温を設定
+        self.minTempLabel.text = String(weather.minTemp)
+        self.maxTempLabel.text = String(weather.maxTemp)
     }
     
     fileprivate func showError(_ error: Error) {
