@@ -25,6 +25,8 @@ final class ReactiveWeatherViewController: UIViewController {
     weak var delegate: ReactiveWeatherViewControllerDelegate?
     private let weatherModel: WeatherModel
     
+    // MARK: - UIViewController
+    
     required init?(coder: NSCoder, weatherModel: WeatherModel) {
         self.weatherModel = weatherModel
         super.init(coder: coder)
@@ -42,6 +44,8 @@ final class ReactiveWeatherViewController: UIViewController {
         super.viewDidLoad()
         self.bind()
     }
+    
+    // MARK: - Private
     
     private func bind() {
         // 天気情報のリロード

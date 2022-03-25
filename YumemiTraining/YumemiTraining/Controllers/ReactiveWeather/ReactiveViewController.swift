@@ -12,10 +12,14 @@ import ReactiveCocoa
 final class ReactiveViewController: UIViewController {
     @IBOutlet private weak var button: UIButton!
     
+    // MARK: - UIViewController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bind()
     }
+    
+    // MARK: - Private
     
     private func bind() {
         self.button.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
