@@ -16,12 +16,12 @@ final class ReactiveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bind()
+        self.setupBind()
     }
     
     // MARK: - Private
     
-    private func bind() {
+    private func setupBind() {
         self.button.reactive.controlEvents(.touchUpInside).observeValues { [weak self] _ in
             self?.showWeatherViewController()
         }

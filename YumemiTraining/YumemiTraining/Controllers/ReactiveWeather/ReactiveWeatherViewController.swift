@@ -42,12 +42,12 @@ final class ReactiveWeatherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bind()
+        self.setupBind()
     }
     
     // MARK: - Private
     
-    private func bind() {
+    private func setupBind() {
         // 天気情報のリロード
         // リロードを行うシグナル
         let willReloadSignal = Signal.merge(
