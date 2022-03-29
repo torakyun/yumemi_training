@@ -15,6 +15,8 @@ protocol ReactiveWeatherViewControllerDelegate: AnyObject {
 }
 
 final class ReactiveWeatherViewController: UIViewController {
+    private let viewModel: ReactiveWeatherViewModel
+    
     @IBOutlet private weak var weatherImageView: UIImageView!
     @IBOutlet private weak var minTempLabel: UILabel!
     @IBOutlet private weak var maxTempLabel: UILabel!
@@ -23,17 +25,13 @@ final class ReactiveWeatherViewController: UIViewController {
     @IBOutlet private weak var reloadButton: UIButton!
     
     weak var delegate: ReactiveWeatherViewControllerDelegate?
-    private let weatherModel: WeatherModel
     
     // MARK: - UIViewController
     
-    required init?(coder: NSCoder, weatherModel: WeatherModel) {
-        self.weatherModel = weatherModel
-        super.init(coder: coder)
-    }
-    
     required init?(coder: NSCoder) {
-        fatalError("init(coder) has not been implemented")
+        let model = WeatherModelImpl()
+        self.viewModel = ReactiveWeatherViewModel(model: model)
+        super.init(coder: coder)
     }
     
     deinit {
@@ -61,11 +59,11 @@ final class ReactiveWeatherViewController: UIViewController {
             self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
         )
         // APIからデータを取得
-        self.weatherModel.fetchWeatherAction <~ willReloadSignal.map(value: (at: "tokyo", date: Date()))
-        self.activityIndicatorView.reactive.isAnimating <~ self.weatherModel.fetchWeatherAction.isExecuting
+        self.viewModel.inputs.weatherParameter <~ willReloadSignal.map(value: ("tokyo", Date()))
+        self.activityIndicatorView.reactive.isAnimating <~ self.viewModel.outputs.loading
         // Viewに反映
-        self.reactive.updateWeather <~ self.weatherModel.fetchWeatherAction.values
-        self.reactive.showError <~ self.weatherModel.fetchWeatherAction.errors
+        self.reactive.updateWeather <~ self.viewModel.outputs.weatherResult
+        self.reactive.showError <~ self.viewModel.outputs.error
         
         // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive
