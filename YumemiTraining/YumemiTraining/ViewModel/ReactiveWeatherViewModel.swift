@@ -46,12 +46,12 @@ final class ReactiveWeatherViewModel: NSObject {
         )
         self.load <~ willReloadSignal.map(value: ("tokyo", Date()))
         
-        self.reactive.changeWeatherImage <~ self.load.values.map { $0.weather }
+        self.reactive.changeWeatherImageResource <~ self.load.values.map { $0.weather }
         self._maxTemp <~ self.load.values.map { String($0.maxTemp) }
         self._minTemp <~ self.load.values.map { String($0.minTemp) }
     }
     
-    fileprivate func changeWeatherImage(_ weather: String) {
+    fileprivate func changeWeatherImageResource(_ weather: String) {
         let image: (UIImage?, UIColor?)
         switch weather {
         case "sunny":
@@ -128,9 +128,9 @@ extension ReactiveWeatherViewModel: ReactiveWeatherViewModelOutputs {
 // MARK: - Reactive
 
 private extension Reactive where Base == ReactiveWeatherViewModel {
-    var changeWeatherImage: BindingTarget<String> {
+    var changeWeatherImageResource: BindingTarget<String> {
         self.makeBindingTarget { base, weather in
-            base.changeWeatherImage(weather)
+            base.changeWeatherImageResource(weather)
         }
     }
 }
