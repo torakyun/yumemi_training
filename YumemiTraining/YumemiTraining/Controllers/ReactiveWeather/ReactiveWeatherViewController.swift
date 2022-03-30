@@ -46,22 +46,11 @@ final class ReactiveWeatherViewController: UIViewController {
     // MARK: - Private
     
     private func setupBind() {
-        // 天気情報のリロード
-        // リロードを行うシグナル
-        let willReloadSignal = Signal.merge(
-            // フォアグラウンドに戻った
-            NotificationCenter.default.reactive
-                .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
-                .map { _ in },
-            // viewDidAppearが実行された
-            self.reactive.viewDidAppear,
-            // Reloadボタンが押された
-            self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
-        )
-        // APIからデータを取得
-        self.viewModel.inputs.weatherParameter <~ willReloadSignal.map(value: ("tokyo", Date()))
+        // Viewで発生したイベント
+        self.viewModel.inputs.viewDidAppear <~ self.reactive.viewDidAppear
+        self.viewModel.inputs.refresh <~ self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
+        // Modelの処理をViewに反映
         self.activityIndicatorView.reactive.isAnimating <~ self.viewModel.outputs.loading
-        // Viewに反映
         self.reactive.updateWeather <~ self.viewModel.outputs.weatherResult
         self.reactive.showError <~ self.viewModel.outputs.error
         

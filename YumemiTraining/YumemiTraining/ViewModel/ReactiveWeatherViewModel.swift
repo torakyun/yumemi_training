@@ -5,7 +5,7 @@
 //  Created by 水野虎樹 on 2022/03/25.
 //
 
-import Foundation
+import UIKit
 import ReactiveSwift
 
 final class ReactiveWeatherViewModel: NSObject {
@@ -13,7 +13,8 @@ final class ReactiveWeatherViewModel: NSObject {
     private let load: Action<(String, Date), WeatherResult, Error>
     
     // input
-    private let weatherParameterPipe = Signal<(String, Date), Never>.pipe()
+    private let viewDidAppearPipe = Signal<Void, Never>.pipe()
+    private let refreshPipe = Signal<Void, Never>.pipe()
     
     // MARK: - NSObject
     
@@ -29,7 +30,15 @@ final class ReactiveWeatherViewModel: NSObject {
     
     // MARK: - Private
     private func setupBind() {
-        self.load <~ self.weatherParameterPipe.output
+        // リロードを行うシグナル
+        let willReloadSignal = Signal.merge(
+            NotificationCenter.default.reactive
+                .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
+                .map { _ in },
+            self.viewDidAppearPipe.output,
+            self.refreshPipe.output
+        )
+        self.load <~ willReloadSignal.map(value: ("tokyo", Date()))
     }
 }
 
@@ -43,8 +52,11 @@ extension ReactiveWeatherViewModel: ReactiveWeatherViewModelType {
 // MARK: - ReactiveWeatherViewModelInputs
 
 extension ReactiveWeatherViewModel: ReactiveWeatherViewModelInputs {
-    var weatherParameter: Signal<(String, Date), Never>.Observer {
-        self.weatherParameterPipe.input
+    var viewDidAppear: Signal<Void, Never>.Observer {
+        self.viewDidAppearPipe.input
+    }
+    var refresh: Signal<Void, Never>.Observer {
+        self.refreshPipe.input
     }
 }
 

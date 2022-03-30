@@ -9,7 +9,8 @@ import Foundation
 import ReactiveSwift
 
 protocol ReactiveWeatherViewModelInputs {
-    var weatherParameter: Signal<(String, Date), Never>.Observer { get }
+    var viewDidAppear: Signal<Void, Never>.Observer { get }
+    var refresh: Signal<Void, Never>.Observer { get }
 }
 
 protocol ReactiveWeatherViewModelOutputs {
