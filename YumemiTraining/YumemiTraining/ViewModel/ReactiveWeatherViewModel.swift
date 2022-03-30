@@ -7,14 +7,22 @@
 
 import UIKit
 import ReactiveSwift
+import YumemiWeather
 
-final class ReactiveWeatherViewModel {
+final class ReactiveWeatherViewModel: NSObject {
     private let model: WeatherModelImpl
     private let load: Action<(String, Date), WeatherResult, Error>
     
     // input
     private let viewDidAppearPipe = Signal<Void, Never>.pipe()
     private let reloadButtonDidPressPipe = Signal<Void, Never>.pipe()
+    // output
+    private let _weatherImage = MutableProperty<UIImage?>(nil)
+    private let _weatherImageColor = MutableProperty<UIColor>(.tintColor)
+    private let _maxTemp = MutableProperty<String?>(nil)
+    private let _minTemp = MutableProperty<String?>(nil)
+    
+    // MARK: - NSObject
     
     init(model: WeatherModelImpl) {
         self.model = model
@@ -22,6 +30,7 @@ final class ReactiveWeatherViewModel {
             model.fetchWeather(at: area, date: date)
         }
         
+        super.init()
         self.setupBind()
     }
     
@@ -36,6 +45,42 @@ final class ReactiveWeatherViewModel {
             self.reloadButtonDidPressPipe.output
         )
         self.load <~ willReloadSignal.map(value: ("tokyo", Date()))
+        
+        self.reactive.changeWeatherImage <~ self.load.values.map { $0.weather }
+        self._maxTemp <~ self.load.values.map { String($0.maxTemp) }
+        self._minTemp <~ self.load.values.map { String($0.minTemp) }
+    }
+    
+    fileprivate func changeWeatherImage(_ weather: String) {
+        let image: (UIImage?, UIColor?)
+        switch weather {
+        case "sunny":
+            image = (UIImage(named: "sunny"), .red)
+        case "cloudy":
+            image = (UIImage(named: "cloudy"), .gray)
+        case "rainy":
+            image = (UIImage(named: "rainy"), .blue)
+        default:
+            image = (nil, nil)
+        }
+        
+        self._weatherImage.value = image.0
+        if let color = image.1 {
+            self._weatherImageColor.value = color
+        }
+    }
+    
+    private func makeErrorMessage(_ error: Error) -> String {
+        switch error {
+        case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+            return "JSONエンコードに失敗"
+        case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
+            return "JSONデコードに失敗"
+        case YumemiWeatherError.unknownError:
+            return "天気情報の取得に失敗"
+        default:
+            return "エラー発生"
+        }
     }
 }
 
@@ -60,13 +105,32 @@ extension ReactiveWeatherViewModel: ReactiveWeatherViewModelInputs {
 // MARK: - ReactiveWeatherViewModelOutputs
 
 extension ReactiveWeatherViewModel: ReactiveWeatherViewModelOutputs {
-    var updateWeather: Signal<WeatherResult, Never> {
-        self.load.values
+    var weatherImage: Property<UIImage?> {
+        Property<UIImage?>(self._weatherImage)
     }
-    var showError: Signal<Error, Never> {
-        self.load.errors
+    var weatherImageColor: Property<UIColor> {
+        Property<UIColor>(self._weatherImageColor)
+    }
+    var maxTemp: Property<String?> {
+        Property<String?>(self._maxTemp)
+    }
+    var minTemp: Property<String?> {
+        Property<String?>(self._minTemp)
+    }
+    var showErrorAlert: Signal<String, Never> {
+        self.load.errors.map { self.makeErrorMessage($0) }
     }
     var isActivityIndicatorViewAnimating: Property<Bool> {
         self.load.isExecuting
+    }
+}
+
+// MARK: - Reactive
+
+private extension Reactive where Base == ReactiveWeatherViewModel {
+    var changeWeatherImage: BindingTarget<String> {
+        self.makeBindingTarget { base, weather in
+            base.changeWeatherImage(weather)
+        }
     }
 }

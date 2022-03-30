@@ -49,10 +49,18 @@ final class ReactiveWeatherViewController: UIViewController {
         // Viewで発生したイベント
         self.viewModel.inputs.viewDidAppear <~ self.reactive.viewDidAppear
         self.viewModel.inputs.reloadButtonDidPress <~ self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
+        
         // Modelの処理をViewに反映
+        // インジケーター
         self.activityIndicatorView.reactive.isAnimating <~ self.viewModel.outputs.isActivityIndicatorViewAnimating
-        self.reactive.updateWeather <~ self.viewModel.outputs.updateWeather
-        self.reactive.showError <~ self.viewModel.outputs.showError
+        // 天気の画像
+        self.weatherImageView.reactive.image <~ self.viewModel.weatherImage
+        self.weatherImageView.reactive.tintColor <~ self.viewModel.weatherImageColor
+        // 気温
+        self.minTempLabel.reactive.text <~ self.viewModel.minTemp
+        self.maxTempLabel.reactive.text <~ self.viewModel.maxTemp
+        // エラーアラート
+        self.reactive.showErrorAlert <~ self.viewModel.outputs.showErrorAlert
         
         // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive
@@ -68,64 +76,20 @@ final class ReactiveWeatherViewController: UIViewController {
         }
     }
     
-    fileprivate func updateWeather(from weather: WeatherResult) {
-        // 天気の画像を設定
-        let weatherImageResource = self.weatherImageResource(weather.weather)
-        self.weatherImageView.image = weatherImageResource.image
-        self.weatherImageView.tintColor = weatherImageResource.color
-        //最高気温と最低気温を設定
-        self.minTempLabel.text = String(weather.minTemp)
-        self.maxTempLabel.text = String(weather.maxTemp)
-    }
-    
-    fileprivate func showError(_ error: Error) {
-        let message: String
-        switch error {
-        case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-            message = "JSONエンコードに失敗"
-        case WeatherModelImpl.FetchWeatherError.decodeDataFailed:
-            message = "JSONデコードに失敗"
-        case YumemiWeatherError.unknownError:
-            message = "天気情報の取得に失敗"
-        default:
-            message = "エラー発生"
-        }
-        self.showErrorAlert(title: "Error", message: message)
-    }
-    
-    private func weatherImageResource(_ weather: String) -> (image: UIImage?, color: UIColor?) {
-        switch weather {
-        case "sunny":
-            return (UIImage(named: "sunny"), .red)
-        case "cloudy":
-            return (UIImage(named: "cloudy"), .gray)
-        case "rainy":
-            return (UIImage(named: "rainy"), .blue)
-        default:
-            return (nil, nil)
-        }
-    }
-    
-    private func showErrorAlert(title: String?, message: String?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    fileprivate func showErrorAlert(message: String?) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel)
         alert.addAction(cancelAction)
         self.present(alert, animated: true)
     }
-    
 }
 
 // MARK: - Reactive
 
 private extension Reactive where Base == ReactiveWeatherViewController {
-    var updateWeather: BindingTarget<WeatherResult> {
-        self.makeBindingTarget { (base: ReactiveWeatherViewController, weatherResult: WeatherResult) in
-            base.updateWeather(from: weatherResult)
-        }
-    }
-    var showError: BindingTarget<Error> {
-        self.makeBindingTarget { (base: ReactiveWeatherViewController, error: Error) in
-            base.showError(error)
+    var showErrorAlert: BindingTarget<String> {
+        self.makeBindingTarget { base, message in
+            base.showErrorAlert(message: message)
         }
     }
 }
