@@ -48,7 +48,7 @@ final class ReactiveWeatherViewController: UIViewController {
     private func setupBind() {
         // Viewで発生したイベント
         self.viewModel.inputs.viewDidAppear <~ self.reactive.viewDidAppear
-        self.viewModel.inputs.refresh <~ self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
+        self.viewModel.inputs.reloadButtonDidPress <~ self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
         // Modelの処理をViewに反映
         self.activityIndicatorView.reactive.isAnimating <~ self.viewModel.outputs.isActivityIndicatorViewAnimating
         self.reactive.updateWeather <~ self.viewModel.outputs.updateWeather

@@ -14,7 +14,7 @@ final class ReactiveWeatherViewModel {
     
     // input
     private let viewDidAppearPipe = Signal<Void, Never>.pipe()
-    private let refreshPipe = Signal<Void, Never>.pipe()
+    private let reloadButtonDidPressPipe = Signal<Void, Never>.pipe()
     
     init(model: WeatherModelImpl) {
         self.model = model
@@ -33,7 +33,7 @@ final class ReactiveWeatherViewModel {
                 .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
                 .map { _ in },
             self.viewDidAppearPipe.output,
-            self.refreshPipe.output
+            self.reloadButtonDidPressPipe.output
         )
         self.load <~ willReloadSignal.map(value: ("tokyo", Date()))
     }
@@ -52,8 +52,8 @@ extension ReactiveWeatherViewModel: ReactiveWeatherViewModelInputs {
     var viewDidAppear: Signal<Void, Never>.Observer {
         self.viewDidAppearPipe.input
     }
-    var refresh: Signal<Void, Never>.Observer {
-        self.refreshPipe.input
+    var reloadButtonDidPress: Signal<Void, Never>.Observer {
+        self.reloadButtonDidPressPipe.input
     }
 }
 

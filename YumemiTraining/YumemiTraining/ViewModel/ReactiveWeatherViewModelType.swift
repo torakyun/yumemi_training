@@ -10,7 +10,7 @@ import ReactiveSwift
 
 protocol ReactiveWeatherViewModelInputs {
     var viewDidAppear: Signal<Void, Never>.Observer { get }
-    var refresh: Signal<Void, Never>.Observer { get }
+    var reloadButtonDidPress: Signal<Void, Never>.Observer { get }
 }
 
 protocol ReactiveWeatherViewModelOutputs {
