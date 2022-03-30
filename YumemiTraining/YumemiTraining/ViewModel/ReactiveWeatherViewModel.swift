@@ -8,7 +8,7 @@
 import UIKit
 import ReactiveSwift
 
-final class ReactiveWeatherViewModel: NSObject {
+final class ReactiveWeatherViewModel {
     private let model: WeatherModelImpl
     private let load: Action<(String, Date), WeatherResult, Error>
     
@@ -16,15 +16,12 @@ final class ReactiveWeatherViewModel: NSObject {
     private let viewDidAppearPipe = Signal<Void, Never>.pipe()
     private let refreshPipe = Signal<Void, Never>.pipe()
     
-    // MARK: - NSObject
-    
     init(model: WeatherModelImpl) {
         self.model = model
         self.load = Action<(String, Date), WeatherResult, Error> { (area, date) in
             model.fetchWeather(at: area, date: date)
         }
         
-        super.init()
         self.setupBind()
     }
     
