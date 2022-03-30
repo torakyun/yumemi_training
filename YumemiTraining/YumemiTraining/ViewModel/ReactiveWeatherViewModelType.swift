@@ -14,9 +14,9 @@ protocol ReactiveWeatherViewModelInputs {
 }
 
 protocol ReactiveWeatherViewModelOutputs {
-    var weatherResult: Signal<WeatherResult, Never> { get }
-    var error: Signal<Error, Never> { get }
-    var loading: Property<Bool> { get }
+    var updateWeather: Signal<WeatherResult, Never> { get }
+    var showError: Signal<Error, Never> { get }
+    var isActivityIndicatorViewAnimating: Property<Bool> { get }
 }
 
 protocol ReactiveWeatherViewModelType {

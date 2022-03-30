@@ -50,9 +50,9 @@ final class ReactiveWeatherViewController: UIViewController {
         self.viewModel.inputs.viewDidAppear <~ self.reactive.viewDidAppear
         self.viewModel.inputs.refresh <~ self.reloadButton.reactive.controlEvents(.touchUpInside).map { _ in }
         // Modelの処理をViewに反映
-        self.activityIndicatorView.reactive.isAnimating <~ self.viewModel.outputs.loading
-        self.reactive.updateWeather <~ self.viewModel.outputs.weatherResult
-        self.reactive.showError <~ self.viewModel.outputs.error
+        self.activityIndicatorView.reactive.isAnimating <~ self.viewModel.outputs.isActivityIndicatorViewAnimating
+        self.reactive.updateWeather <~ self.viewModel.outputs.updateWeather
+        self.reactive.showError <~ self.viewModel.outputs.showError
         
         // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive

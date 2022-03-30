@@ -63,13 +63,13 @@ extension ReactiveWeatherViewModel: ReactiveWeatherViewModelInputs {
 // MARK: - ReactiveWeatherViewModelOutputs
 
 extension ReactiveWeatherViewModel: ReactiveWeatherViewModelOutputs {
-    var weatherResult: Signal<WeatherResult, Never> {
+    var updateWeather: Signal<WeatherResult, Never> {
         self.load.values
     }
-    var error: Signal<Error, Never> {
+    var showError: Signal<Error, Never> {
         self.load.errors
     }
-    var loading: Property<Bool> {
+    var isActivityIndicatorViewAnimating: Property<Bool> {
         self.load.isExecuting
     }
 }
