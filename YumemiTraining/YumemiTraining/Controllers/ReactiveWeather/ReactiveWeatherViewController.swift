@@ -54,8 +54,8 @@ final class ReactiveWeatherViewController: UIViewController {
         // インジケーター
         self.activityIndicatorView.reactive.isAnimating <~ self.viewModel.outputs.isActivityIndicatorViewAnimating
         // 天気の画像
-        self.weatherImageView.reactive.image <~ self.viewModel.weatherImage
-        self.weatherImageView.reactive.tintColor <~ self.viewModel.weatherImageColor
+        self.weatherImageView.reactive.image <~ self.viewModel.image
+        self.weatherImageView.reactive.tintColor <~ self.viewModel.color
         // 気温
         self.minTempLabel.reactive.text <~ self.viewModel.minTemp
         self.maxTempLabel.reactive.text <~ self.viewModel.maxTemp

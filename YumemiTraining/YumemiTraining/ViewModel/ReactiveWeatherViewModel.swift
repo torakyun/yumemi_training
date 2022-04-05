@@ -17,8 +17,8 @@ final class ReactiveWeatherViewModel: NSObject {
     private let viewDidAppearPipe = Signal<Void, Never>.pipe()
     private let reloadButtonDidPressPipe = Signal<Void, Never>.pipe()
     // output
-    private let _weatherImage = MutableProperty<UIImage?>(nil)
-    private let _weatherImageColor = MutableProperty<UIColor>(.tintColor)
+    private let _image = MutableProperty<UIImage?>(nil)
+    private let _color = MutableProperty<UIColor>(.tintColor)
     private let _maxTemp = MutableProperty<String?>(nil)
     private let _minTemp = MutableProperty<String?>(nil)
     
@@ -64,9 +64,9 @@ final class ReactiveWeatherViewModel: NSObject {
             image = (nil, nil)
         }
         
-        self._weatherImage.value = image.0
+        self._image.value = image.0
         if let color = image.1 {
-            self._weatherImageColor.value = color
+            self._color.value = color
         }
     }
     
@@ -105,11 +105,11 @@ extension ReactiveWeatherViewModel: ReactiveWeatherViewModelInputs {
 // MARK: - ReactiveWeatherViewModelOutputs
 
 extension ReactiveWeatherViewModel: ReactiveWeatherViewModelOutputs {
-    var weatherImage: Property<UIImage?> {
-        Property<UIImage?>(self._weatherImage)
+    var image: Property<UIImage?> {
+        Property<UIImage?>(self._image)
     }
-    var weatherImageColor: Property<UIColor> {
-        Property<UIColor>(self._weatherImageColor)
+    var color: Property<UIColor> {
+        Property<UIColor>(self._color)
     }
     var maxTemp: Property<String?> {
         Property<String?>(self._maxTemp)

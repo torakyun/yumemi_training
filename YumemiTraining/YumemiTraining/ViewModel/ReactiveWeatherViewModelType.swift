@@ -15,8 +15,8 @@ protocol ReactiveWeatherViewModelInputs {
 }
 
 protocol ReactiveWeatherViewModelOutputs {
-    var weatherImage: Property<UIImage?> { get }
-    var weatherImageColor: Property<UIColor> { get }
+    var image: Property<UIImage?> { get }
+    var color: Property<UIColor> { get }
     var maxTemp: Property<String?> { get }
     var minTemp: Property<String?> { get }
     var showErrorAlert: Signal<String, Never> { get }
