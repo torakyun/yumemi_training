@@ -11,6 +11,8 @@
 		43BF2CE427DAD46900A5B64B /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BF2CE327DAD46900A5B64B /* SampleViewController.swift */; };
 		43BF2CE727DAD8F000A5B64B /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 43BF2CE627DAD8F000A5B64B /* ReactiveCocoa */; };
 		43DC39CC27DAD24E009497D3 /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */; };
+		B34863C527EDC83000C41B42 /* ReactiveWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34863C427EDC83000C41B42 /* ReactiveWeatherViewModel.swift */; };
+		B34863C727EDC84200C41B42 /* ReactiveWeatherViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34863C627EDC84200C41B42 /* ReactiveWeatherViewModelType.swift */; };
 		B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */; };
 		B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */; };
 		B3AF310927BF99EE00A7C1DB /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */; };
@@ -34,6 +36,8 @@
 		43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleViewController.storyboard; sourceTree = "<group>"; };
 		43BF2CE327DAD46900A5B64B /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
+		B34863C427EDC83000C41B42 /* ReactiveWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveWeatherViewModel.swift; sourceTree = "<group>"; };
+		B34863C627EDC84200C41B42 /* ReactiveWeatherViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveWeatherViewModelType.swift; sourceTree = "<group>"; };
 		B3AF310127BF99EE00A7C1DB /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B368603027F2A24F0065AA70 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B34863C427EDC83000C41B42 /* ReactiveWeatherViewModel.swift */,
+				B34863C627EDC84200C41B42 /* ReactiveWeatherViewModelType.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B3AF30F827BF99EE00A7C1DB = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +106,7 @@
 				B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */,
 				B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */,
 				B3AF311227BF99EF00A7C1DB /* Info.plist */,
+				B368603027F2A24F0065AA70 /* ViewModel */,
 			);
 			path = YumemiTraining;
 			sourceTree = "<group>";
@@ -234,6 +248,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B34863C527EDC83000C41B42 /* ReactiveWeatherViewModel.swift in Sources */,
 				B3D5259627D1AAF0002D7A4D /* WeatherResult.swift in Sources */,
 				B3D5259927D1B112002D7A4D /* WeatherModelImpl.swift in Sources */,
 				B3AF310927BF99EE00A7C1DB /* WeatherViewController.swift in Sources */,
@@ -242,6 +257,7 @@
 				B3D525AD27DAFD5E002D7A4D /* ReactiveWeatherViewController.swift in Sources */,
 				B3D5259E27D1BEA3002D7A4D /* ViewController.swift in Sources */,
 				B3D5259427D1AA93002D7A4D /* WeatherParameter.swift in Sources */,
+				B34863C727EDC84200C41B42 /* ReactiveWeatherViewModelType.swift in Sources */,
 				B3D525A427D887C7002D7A4D /* WeatherModel.swift in Sources */,
 				B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */,
 				43BF2CE427DAD46900A5B64B /* SampleViewController.swift in Sources */,
