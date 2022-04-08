@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w4v-bH-XBQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w4v-bH-XBQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -67,12 +67,23 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1iF-Y2-L31">
                                 <rect key="frame" x="197" y="604.5" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kcs-e5-6lt">
+                                <rect key="frame" x="274" y="84" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1fT-0k-rSI"/>
+                                    <constraint firstAttribute="width" constant="100" id="jgO-Ll-Azp"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="東京"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Z8I-X5-wkR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qGF-er-Q9k" firstAttribute="centerX" secondItem="Z8I-X5-wkR" secondAttribute="centerX" id="0Fv-7p-0Zz"/>
                             <constraint firstItem="1iF-Y2-L31" firstAttribute="top" secondItem="qEb-pc-LcV" secondAttribute="bottom" constant="30" id="3L3-Yx-Gne"/>
+                            <constraint firstItem="Kcs-e5-6lt" firstAttribute="top" secondItem="Z8I-X5-wkR" secondAttribute="top" constant="40" id="ASr-hA-3jV"/>
+                            <constraint firstItem="Z8I-X5-wkR" firstAttribute="trailing" secondItem="Kcs-e5-6lt" secondAttribute="trailing" constant="40" id="Btu-u7-RES"/>
                             <constraint firstItem="qEb-pc-LcV" firstAttribute="centerY" secondItem="Z8I-X5-wkR" secondAttribute="centerY" id="J0T-mv-yay"/>
                             <constraint firstItem="qEb-pc-LcV" firstAttribute="width" secondItem="n0V-Qw-svS" secondAttribute="width" multiplier="0.5" id="Pws-3R-cYY"/>
                             <constraint firstItem="qEb-pc-LcV" firstAttribute="centerX" secondItem="Z8I-X5-wkR" secondAttribute="centerX" id="WF4-3J-gyC"/>
@@ -86,6 +97,7 @@
                         <outlet property="closeButton" destination="hLK-vs-0XQ" id="c2Q-Ax-ZaR"/>
                         <outlet property="maxTempLabel" destination="1KN-rm-lwg" id="rBB-lV-6t1"/>
                         <outlet property="minTempLabel" destination="PMd-30-tTa" id="4ZF-ht-7mU"/>
+                        <outlet property="prefectureButton" destination="Kcs-e5-6lt" id="f7u-ZZ-kuI"/>
                         <outlet property="reloadButton" destination="H1q-5X-eS2" id="06b-g0-k9c"/>
                         <outlet property="weatherImageView" destination="pg9-JD-ju7" id="S69-Du-v31"/>
                     </connections>
