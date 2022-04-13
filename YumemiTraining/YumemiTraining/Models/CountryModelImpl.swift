@@ -18,7 +18,7 @@ final class CountryModelImpl: CountryModel {
             }
             DispatchQueue.global().async {
                 do {
-                    let country: Country = try CountryAPI.fetchCountry()
+                    let country = try CountryAPI.fetchCountry()
                     
                     observer.send(value: country)
                     observer.sendCompleted()

@@ -8,7 +8,7 @@
 import Foundation
 
 enum CountryAPI {
-    static func fetchCountry<T: Decodable>() throws -> T {
+    static func fetchCountry() throws -> Country {
         // 北海道地方
         let hokkaidoPrefectures: [String] = ["hokkaido"]
         let hokkaidoRegion: [String: Any] = ["regionName": "hokkaido", "prefectures": hokkaidoPrefectures]
@@ -45,6 +45,6 @@ enum CountryAPI {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         // Decodableにデコード
-        return try decoder.decode(T.self, from: jsonData)
+        return try decoder.decode(Country.self, from: jsonData)
     }
 }
