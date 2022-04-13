@@ -8,7 +8,7 @@
 import Foundation
 
 enum CountryAPI {
-    public static func fetchCountry<T: Decodable>() throws -> T {
+    static func fetchCountry<T: Decodable>() throws -> T {
         
         var hokkaidoRegion = Dictionary<String, Any>()
         hokkaidoRegion["regionName"] = "hokkaido"
