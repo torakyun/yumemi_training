@@ -22,7 +22,7 @@ final class ReactiveWeatherViewModel: NSObject {
     private let _color = MutableProperty<UIColor>(.tintColor)
     private let _maxTemp = MutableProperty<String?>(nil)
     private let _minTemp = MutableProperty<String?>(nil)
-    private let _prefectureButtonTitle = MutableProperty<String>("tokyo")
+    private let _prefectureButtonTitle = MutableProperty<String>("東京都")
     
     // MARK: - NSObject
     
