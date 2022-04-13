@@ -9,67 +9,34 @@ import Foundation
 
 enum CountryAPI {
     static func fetchCountry<T: Decodable>() throws -> T {
+        // 北海道地方
+        let hokkaidoPrefectures: [String] = ["hokkaido"]
+        let hokkaidoRegion: [String: Any] = ["regionName": "hokkaido", "prefectures": hokkaidoPrefectures]
+        // 東北地方
+        let tohokuPrefectures: [String] = ["aomori", "iwate", "miyagi", "akita", "yamagata", "hukusima"]
+        let tohokuRegion: [String: Any] = ["regionName": "tohoku", "prefectures": tohokuPrefectures]
+        // 関東地方
+        let kantoPrefectures: [String] = ["tokyo", "ibaraki", "tochigi", "gunma", "saitama", "chiba", "kanagawa"]
+        let kantoRegion: [String: Any] = ["regionName": "kanto", "prefectures": kantoPrefectures]
+        // 中部地方
+        let chubuPrefectures: [String] = ["nigata", "toyama", "ishikawa", "hukui", "yamanashi", "nagano", "gihu", "shizuoka", "aichi"]
+        let chubuRegion: [String: Any] = ["regionName": "chubu", "prefectures": chubuPrefectures]
+        // 近畿地方
+        let kinkiPrefectures: [String] = ["mie", "shiga", "kyoto", "osaka", "hyogo", "nara", "wakayama"]
+        let kinkiRegion: [String: Any] = ["regionName": "kinki", "prefectures": kinkiPrefectures]
+        // 中国地方
+        let chugokuPrefectures: [String] = ["tottori", "shimane", "okayama", "hiroshima", "yamaguchi"]
+        let chugokuRegion: [String: Any] = ["regionName": "chugoku", "prefectures": chugokuPrefectures]
+        // 四国地方
+        let shikokuPrefectures: [String] = ["tokushima", "kagawa", "ehime", "kochi"]
+        let shikokuRegion: [String: Any] = ["regionName": "shikoku", "prefectures": shikokuPrefectures]
+        // 九州地方
+        let kyushuPrefectures: [String] = ["hukuoka", "saga", "nagasaki", "kumamoto", "oita", "miyazaki", "kagoshima", "okinawa"]
+        let kyushuRegion: [String: Any] = ["regionName": "kyushu", "prefectures": kyushuPrefectures]
         
-        var hokkaidoRegion = Dictionary<String, Any>()
-        hokkaidoRegion["regionName"] = "hokkaido"
-        var hokkaidoPrefectures = Array<Any>()
-        hokkaidoPrefectures.append(contentsOf: ["hokkaido"])
-        hokkaidoRegion["prefectures"] = hokkaidoPrefectures
-        
-        var tohokuRegion = Dictionary<String, Any>()
-        tohokuRegion["regionName"] = "tohoku"
-        var tohokuPrefectures = Array<Any>()
-        tohokuPrefectures.append(contentsOf: ["aomori", "iwate", "miyagi", "akita", "yamagata", "hukusima"])
-        tohokuRegion["prefectures"] = tohokuPrefectures
-        
-        var kantoRegion = Dictionary<String, Any>()
-        kantoRegion["regionName"] = "kanto"
-        var kantoPrefectures = Array<Any>()
-        kantoPrefectures.append(contentsOf: ["tokyo", "ibaraki", "tochigi", "gunma", "saitama", "chiba", "kanagawa"])
-        kantoRegion["prefectures"] = kantoPrefectures
-        
-        var chubuRegion = Dictionary<String, Any>()
-        chubuRegion["regionName"] = "chubu"
-        var chubuPrefectures = Array<Any>()
-        chubuPrefectures.append(contentsOf: ["nigata", "toyama", "ishikawa", "hukui", "yamanashi", "nagano", "gihu", "shizuoka", "aichi"])
-        chubuRegion["prefectures"] = chubuPrefectures
-        
-        var kinkiRegion = Dictionary<String, Any>()
-        kinkiRegion["regionName"] = "kinki"
-        var kinkiPrefectures = Array<Any>()
-        kinkiPrefectures.append(contentsOf: ["mie", "shiga", "kyoto", "osaka", "hyogo", "nara", "wakayama"])
-        kinkiRegion["prefectures"] = kinkiPrefectures
-        
-        var chugokuRegion = Dictionary<String, Any>()
-        chugokuRegion["regionName"] = "chugoku"
-        var chugokuPrefectures = Array<Any>()
-        chugokuPrefectures.append(contentsOf: ["tottori", "shimane", "okayama", "hiroshima", "yamaguchi"])
-        chugokuRegion["prefectures"] = chugokuPrefectures
-        
-        var shikokuRegion = Dictionary<String, Any>()
-        shikokuRegion["regionName"] = "shikoku"
-        var shikokuPrefectures = Array<Any>()
-        shikokuPrefectures.append(contentsOf: ["tokushima", "kagawa", "ehime", "kochi"])
-        shikokuRegion["prefectures"] = shikokuPrefectures
-        
-        var kyushuRegion = Dictionary<String, Any>()
-        kyushuRegion["regionName"] = "kyushu"
-        var kyushuPrefectures = Array<Any>()
-        kyushuPrefectures.append(contentsOf: ["hukuoka", "saga", "nagasaki", "kumamoto", "oita", "miyazaki", "kagoshima", "okinawa"])
-        kyushuRegion["prefectures"] = kyushuPrefectures
-        
-        var country = Dictionary<String, Any>()
-        country["countryName"] = "japan"
-        var regions = Array<Any>()
-        regions.append(hokkaidoRegion)
-        regions.append(tohokuRegion)
-        regions.append(kantoRegion)
-        regions.append(chubuRegion)
-        regions.append(kinkiRegion)
-        regions.append(chugokuRegion)
-        regions.append(shikokuRegion)
-        regions.append(kyushuRegion)
-        country["regions"] = regions
+        // 日本の地方区分
+        let regions: [Any] = [hokkaidoRegion, tohokuRegion, kantoRegion, chubuRegion, kinkiRegion, chugokuRegion, shikokuRegion, kyushuRegion]
+        let country: [String: Any] = ["countryName": "japan", "regions": regions]
         
         // DictionaryをJSONデータに変換
         let jsonData = try JSONSerialization.data(withJSONObject: country)
