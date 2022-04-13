@@ -95,8 +95,33 @@ extension PrefectureSelectorViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         let label = cell.contentView.viewWithTag(1) as! UILabel
         label.text = self.country?.regions[indexPath.section].prefectures[indexPath.row]
+        cell.backgroundColor = self.setCellBackGroundColorBySection(indexPath.section)
+        
         
         return cell
+    }
+    
+    func setCellBackGroundColorBySection(_ section: Int) -> UIColor? {
+        switch section {
+        case 0:
+            return .red
+        case 1:
+            return .yellow
+        case 2:
+            return .green
+        case 3:
+            return .cyan
+        case 4:
+            return .blue
+        case 5:
+            return .orange
+        case 6:
+            return .purple
+        case 7:
+            return .gray
+        default:
+            return nil
+        }
     }
 }
 
