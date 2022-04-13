@@ -11,6 +11,7 @@ import ReactiveCocoa
 
 protocol PrefectureSelectorViewControllerDelegate: AnyObject {
     func prefectureSelectorViewControllerDidPressClose(_ viewController: PrefectureSelectorViewController)
+    func prefectureSelectorViewControllerDidPressPrefecture(_ viewController: PrefectureSelectorViewController, _ prefectureName: String?)
 }
 
 final class PrefectureSelectorViewController: UIViewController {
@@ -60,7 +61,11 @@ final class PrefectureSelectorViewController: UIViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension PrefectureSelectorViewController: UICollectionViewDelegate {}
+extension PrefectureSelectorViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.prefectureSelectorViewControllerDidPressPrefecture(self, self.country?.regions[indexPath.section].prefectures[indexPath.row])
+    }
+}
 
 // MARK: - UICollectionViewDataSource
 

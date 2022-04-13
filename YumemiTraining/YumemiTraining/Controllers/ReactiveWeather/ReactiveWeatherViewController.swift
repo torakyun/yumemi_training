@@ -62,6 +62,8 @@ final class ReactiveWeatherViewController: UIViewController {
         self.maxTempLabel.reactive.text <~ self.viewModel.maxTemp
         // エラーアラート
         self.reactive.showErrorAlert <~ self.viewModel.outputs.showErrorAlert
+        // 都道府県
+        self.prefectureButton.reactive.title <~ self.viewModel.outputs.prefectureButtonTitle
         
         // フォアグラウンドに戻った時にUIAlertControllerが表示されていたら閉じる
         NotificationCenter.default.reactive
@@ -103,6 +105,13 @@ final class ReactiveWeatherViewController: UIViewController {
 
 extension ReactiveWeatherViewController: PrefectureSelectorViewControllerDelegate {
     func prefectureSelectorViewControllerDidPressClose(_ viewController: PrefectureSelectorViewController) {
+        self.dismiss(animated: true)
+    }
+    func prefectureSelectorViewControllerDidPressPrefecture(_ viewController: PrefectureSelectorViewController, _ prefectureName: String?) {
+        if let prefectureName = prefectureName {
+            self.prefectureButton.setTitle(prefectureName, for: .normal)
+            self.viewModel.inputs.prefectureDidChange.send(value: prefectureName)
+        }
         self.dismiss(animated: true)
     }
 }

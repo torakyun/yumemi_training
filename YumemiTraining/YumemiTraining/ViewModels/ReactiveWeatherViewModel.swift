@@ -16,11 +16,13 @@ final class ReactiveWeatherViewModel: NSObject {
     // input
     private let viewDidAppearPipe = Signal<Void, Never>.pipe()
     private let reloadButtonDidPressPipe = Signal<Void, Never>.pipe()
+    private let prefectureDidChangePipe = Signal<String, Never>.pipe()
     // output
     private let _image = MutableProperty<UIImage?>(nil)
     private let _color = MutableProperty<UIColor>(.tintColor)
     private let _maxTemp = MutableProperty<String?>(nil)
     private let _minTemp = MutableProperty<String?>(nil)
+    private let _prefectureButtonTitle = MutableProperty<String>("tokyo")
     
     // MARK: - NSObject
     
@@ -36,15 +38,22 @@ final class ReactiveWeatherViewModel: NSObject {
     
     // MARK: - Private
     private func setupBind() {
+        self._prefectureButtonTitle <~ self.prefectureDidChangePipe.output
+        
         // リロードを行うシグナル
         let willReloadSignal = Signal.merge(
             NotificationCenter.default.reactive
                 .notifications(forName: UIApplication.willEnterForegroundNotification, object: nil)
                 .map { _ in },
             self.viewDidAppearPipe.output,
-            self.reloadButtonDidPressPipe.output
+            self.reloadButtonDidPressPipe.output,
+            self.prefectureDidChangePipe.output.map { _ in }
         )
-        self.load <~ willReloadSignal.map(value: ("tokyo", Date()))
+//        self.load <~ willReloadSignal.map(value: (self._prefectureButtonTitle.value, Date()))
+        self.load <~ willReloadSignal.map { [weak self] _ in
+            guard let self = self else { fatalError() }
+            return (self._prefectureButtonTitle.value, Date())
+        }
         
         self.reactive.changeWeatherImageResource <~ self.load.values.map { $0.weather }
         self._maxTemp <~ self.load.values.map { String($0.maxTemp) }
@@ -100,6 +109,9 @@ extension ReactiveWeatherViewModel: ReactiveWeatherViewModelInputs {
     var reloadButtonDidPress: Signal<Void, Never>.Observer {
         self.reloadButtonDidPressPipe.input
     }
+    var prefectureDidChange: Signal<String, Never>.Observer {
+        self.prefectureDidChangePipe.input
+    }
 }
 
 // MARK: - ReactiveWeatherViewModelOutputs
@@ -122,6 +134,9 @@ extension ReactiveWeatherViewModel: ReactiveWeatherViewModelOutputs {
     }
     var isActivityIndicatorViewAnimating: Property<Bool> {
         self.load.isExecuting
+    }
+    var prefectureButtonTitle: Property<String> {
+        Property<String>(self._prefectureButtonTitle)
     }
 }
 

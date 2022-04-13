@@ -70,6 +70,7 @@ final class WeatherModelImpl: WeatherModel {
     
     func fetchWeather(at area: String, date: Date) -> SignalProducer<WeatherResult, Error> {
         SignalProducer<WeatherResult, Error> { [weak self] observer, lifetime in
+            print(area, date)
             guard !lifetime.hasEnded else {
                 observer.sendInterrupted()
                 return
