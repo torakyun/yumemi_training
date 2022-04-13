@@ -91,7 +91,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B368603027F2A24F0065AA70 /* ViewModel */ = {
+		B368603027F2A24F0065AA70 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				B3B8457127FD9B8200A69CF9 /* PrefectureSelectorViewModel.swift */,
@@ -99,7 +99,7 @@
 				B34863C427EDC83000C41B42 /* ReactiveWeatherViewModel.swift */,
 				B34863C627EDC84200C41B42 /* ReactiveWeatherViewModelType.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B368604327F6F7340065AA70 /* APIs */ = {
@@ -113,8 +113,8 @@
 		B3AF30F827BF99EE00A7C1DB = {
 			isa = PBXGroup;
 			children = (
-				B3AF310327BF99EE00A7C1DB /* YumemiTraining */,
 				B3AF310227BF99EE00A7C1DB /* Products */,
+				B3AF310327BF99EE00A7C1DB /* YumemiTraining */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,15 +129,15 @@
 		B3AF310327BF99EE00A7C1DB /* YumemiTraining */ = {
 			isa = PBXGroup;
 			children = (
+				B3AF311227BF99EF00A7C1DB /* Info.plist */,
 				B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */,
 				B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */,
-				B3C1710F27E1E50E00C7EA06 /* Controllers */,
-				B3D5259A27D1B1D6002D7A4D /* Models */,
 				B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */,
-				B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */,
-				B3AF311227BF99EF00A7C1DB /* Info.plist */,
-				B368603027F2A24F0065AA70 /* ViewModel */,
 				B368604327F6F7340065AA70 /* APIs */,
+				B3C1710F27E1E50E00C7EA06 /* Controllers */,
+				B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */,
+				B3D5259A27D1B1D6002D7A4D /* Models */,
+				B368603027F2A24F0065AA70 /* ViewModels */,
 			);
 			path = YumemiTraining;
 			sourceTree = "<group>";
