@@ -11,8 +11,16 @@
 		43BF2CE427DAD46900A5B64B /* SampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43BF2CE327DAD46900A5B64B /* SampleViewController.swift */; };
 		43BF2CE727DAD8F000A5B64B /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 43BF2CE627DAD8F000A5B64B /* ReactiveCocoa */; };
 		43DC39CC27DAD24E009497D3 /* RootTabBarController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */; };
+		B30DEFE227FD5FD600AEA71A /* PrefectureSelectorSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DEFE127FD5FD600AEA71A /* PrefectureSelectorSectionHeader.swift */; };
 		B34863C527EDC83000C41B42 /* ReactiveWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34863C427EDC83000C41B42 /* ReactiveWeatherViewModel.swift */; };
 		B34863C727EDC84200C41B42 /* ReactiveWeatherViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B34863C627EDC84200C41B42 /* ReactiveWeatherViewModelType.swift */; };
+		B368603627F6F0C50065AA70 /* PrefectureSelectorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B368603527F6F0C50065AA70 /* PrefectureSelectorViewController.storyboard */; };
+		B368603827F6F2C00065AA70 /* Region.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368603727F6F2C00065AA70 /* Region.swift */; };
+		B368603A27F6F5940065AA70 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368603927F6F5940065AA70 /* Country.swift */; };
+		B368603C27F6F5C90065AA70 /* CountryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368603B27F6F5C90065AA70 /* CountryModel.swift */; };
+		B368604027F6F63B0065AA70 /* CountryModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368603F27F6F63B0065AA70 /* CountryModelImpl.swift */; };
+		B368604227F6F7300065AA70 /* CountryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368604127F6F7300065AA70 /* CountryAPI.swift */; };
+		B368604527FD263F0065AA70 /* PrefectureSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B368604427FD263F0065AA70 /* PrefectureSelectorViewController.swift */; };
 		B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */; };
 		B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */; };
 		B3AF310927BF99EE00A7C1DB /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AF310827BF99EE00A7C1DB /* WeatherViewController.swift */; };
@@ -20,6 +28,7 @@
 		B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */; };
 		B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */; };
 		B3AF311A27BF9A8600A7C1DB /* YumemiWeather in Frameworks */ = {isa = PBXBuildFile; productRef = B3AF311927BF9A8600A7C1DB /* YumemiWeather */; };
+		B3B8457227FD9B8200A69CF9 /* PrefectureSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8457127FD9B8200A69CF9 /* PrefectureSelectorViewModel.swift */; };
 		B3D5259427D1AA93002D7A4D /* WeatherParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5259327D1AA93002D7A4D /* WeatherParameter.swift */; };
 		B3D5259627D1AAF0002D7A4D /* WeatherResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5259527D1AAF0002D7A4D /* WeatherResult.swift */; };
 		B3D5259927D1B112002D7A4D /* WeatherModelImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D5259827D1B112002D7A4D /* WeatherModelImpl.swift */; };
@@ -30,14 +39,23 @@
 		B3D525A927DAF4B9002D7A4D /* ReactiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D525A827DAF4B9002D7A4D /* ReactiveViewController.swift */; };
 		B3D525AB27DAFD3C002D7A4D /* ReactiveWeatherViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3D525AA27DAFD3C002D7A4D /* ReactiveWeatherViewController.storyboard */; };
 		B3D525AD27DAFD5E002D7A4D /* ReactiveWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D525AC27DAFD5E002D7A4D /* ReactiveWeatherViewController.swift */; };
+		B3F6327427FD6B9600D840D6 /* PrefectureSelectorViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F6327327FD6B9600D840D6 /* PrefectureSelectorViewModelType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		43BF2CE127DAD45400A5B64B /* SampleViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SampleViewController.storyboard; sourceTree = "<group>"; };
 		43BF2CE327DAD46900A5B64B /* SampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleViewController.swift; sourceTree = "<group>"; };
 		43DC39CB27DAD24E009497D3 /* RootTabBarController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RootTabBarController.storyboard; sourceTree = "<group>"; };
+		B30DEFE127FD5FD600AEA71A /* PrefectureSelectorSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureSelectorSectionHeader.swift; sourceTree = "<group>"; };
 		B34863C427EDC83000C41B42 /* ReactiveWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveWeatherViewModel.swift; sourceTree = "<group>"; };
 		B34863C627EDC84200C41B42 /* ReactiveWeatherViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveWeatherViewModelType.swift; sourceTree = "<group>"; };
+		B368603527F6F0C50065AA70 /* PrefectureSelectorViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrefectureSelectorViewController.storyboard; sourceTree = "<group>"; };
+		B368603727F6F2C00065AA70 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
+		B368603927F6F5940065AA70 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		B368603B27F6F5C90065AA70 /* CountryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModel.swift; sourceTree = "<group>"; };
+		B368603F27F6F63B0065AA70 /* CountryModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryModelImpl.swift; sourceTree = "<group>"; };
+		B368604127F6F7300065AA70 /* CountryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryAPI.swift; sourceTree = "<group>"; };
+		B368604427FD263F0065AA70 /* PrefectureSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureSelectorViewController.swift; sourceTree = "<group>"; };
 		B3AF310127BF99EE00A7C1DB /* YumemiTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YumemiTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +64,7 @@
 		B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3AF311027BF99EF00A7C1DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3AF311227BF99EF00A7C1DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B3B8457127FD9B8200A69CF9 /* PrefectureSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureSelectorViewModel.swift; sourceTree = "<group>"; };
 		B3D5259327D1AA93002D7A4D /* WeatherParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherParameter.swift; sourceTree = "<group>"; };
 		B3D5259527D1AAF0002D7A4D /* WeatherResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResult.swift; sourceTree = "<group>"; };
 		B3D5259827D1B112002D7A4D /* WeatherModelImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModelImpl.swift; sourceTree = "<group>"; };
@@ -56,6 +75,7 @@
 		B3D525A827DAF4B9002D7A4D /* ReactiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveViewController.swift; sourceTree = "<group>"; };
 		B3D525AA27DAFD3C002D7A4D /* ReactiveWeatherViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReactiveWeatherViewController.storyboard; sourceTree = "<group>"; };
 		B3D525AC27DAFD5E002D7A4D /* ReactiveWeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveWeatherViewController.swift; sourceTree = "<group>"; };
+		B3F6327327FD6B9600D840D6 /* PrefectureSelectorViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrefectureSelectorViewModelType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,20 +91,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B368603027F2A24F0065AA70 /* ViewModel */ = {
+		B368603027F2A24F0065AA70 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B3B8457127FD9B8200A69CF9 /* PrefectureSelectorViewModel.swift */,
+				B3F6327327FD6B9600D840D6 /* PrefectureSelectorViewModelType.swift */,
 				B34863C427EDC83000C41B42 /* ReactiveWeatherViewModel.swift */,
 				B34863C627EDC84200C41B42 /* ReactiveWeatherViewModelType.swift */,
 			);
-			path = ViewModel;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B368604327F6F7340065AA70 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				B368604127F6F7300065AA70 /* CountryAPI.swift */,
+			);
+			path = APIs;
 			sourceTree = "<group>";
 		};
 		B3AF30F827BF99EE00A7C1DB = {
 			isa = PBXGroup;
 			children = (
-				B3AF310327BF99EE00A7C1DB /* YumemiTraining */,
 				B3AF310227BF99EE00A7C1DB /* Products */,
+				B3AF310327BF99EE00A7C1DB /* YumemiTraining */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,14 +129,15 @@
 		B3AF310327BF99EE00A7C1DB /* YumemiTraining */ = {
 			isa = PBXGroup;
 			children = (
+				B3AF311227BF99EF00A7C1DB /* Info.plist */,
 				B3AF310427BF99EE00A7C1DB /* AppDelegate.swift */,
 				B3AF310627BF99EE00A7C1DB /* SceneDelegate.swift */,
-				B3C1710F27E1E50E00C7EA06 /* Controllers */,
-				B3D5259A27D1B1D6002D7A4D /* Models */,
 				B3AF310D27BF99EF00A7C1DB /* Assets.xcassets */,
+				B368604327F6F7340065AA70 /* APIs */,
+				B3C1710F27E1E50E00C7EA06 /* Controllers */,
 				B3AF310F27BF99EF00A7C1DB /* LaunchScreen.storyboard */,
-				B3AF311227BF99EF00A7C1DB /* Info.plist */,
-				B368603027F2A24F0065AA70 /* ViewModel */,
+				B3D5259A27D1B1D6002D7A4D /* Models */,
+				B368603027F2A24F0065AA70 /* ViewModels */,
 			);
 			path = YumemiTraining;
 			sourceTree = "<group>";
@@ -129,6 +160,9 @@
 				B3D525A827DAF4B9002D7A4D /* ReactiveViewController.swift */,
 				B3D525AA27DAFD3C002D7A4D /* ReactiveWeatherViewController.storyboard */,
 				B3D525AC27DAFD5E002D7A4D /* ReactiveWeatherViewController.swift */,
+				B368603527F6F0C50065AA70 /* PrefectureSelectorViewController.storyboard */,
+				B368604427FD263F0065AA70 /* PrefectureSelectorViewController.swift */,
+				B30DEFE127FD5FD600AEA71A /* PrefectureSelectorSectionHeader.swift */,
 			);
 			path = ReactiveWeather;
 			sourceTree = "<group>";
@@ -156,6 +190,10 @@
 		B3D5259A27D1B1D6002D7A4D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B368603927F6F5940065AA70 /* Country.swift */,
+				B368603B27F6F5C90065AA70 /* CountryModel.swift */,
+				B368603F27F6F63B0065AA70 /* CountryModelImpl.swift */,
+				B368603727F6F2C00065AA70 /* Region.swift */,
 				B3D525A327D887C7002D7A4D /* WeatherModel.swift */,
 				B3D5259827D1B112002D7A4D /* WeatherModelImpl.swift */,
 				B3D5259327D1AA93002D7A4D /* WeatherParameter.swift */,
@@ -233,6 +271,7 @@
 				B3D525A727DAEB45002D7A4D /* ReactiveViewController.storyboard in Resources */,
 				B3D525AB27DAFD3C002D7A4D /* ReactiveWeatherViewController.storyboard in Resources */,
 				B3D5259C27D1BD68002D7A4D /* WeatherViewController.storyboard in Resources */,
+				B368603627F6F0C50065AA70 /* PrefectureSelectorViewController.storyboard in Resources */,
 				B3AF311127BF99EF00A7C1DB /* LaunchScreen.storyboard in Resources */,
 				B3AF310E27BF99EF00A7C1DB /* Assets.xcassets in Resources */,
 				43BF2CE227DAD45400A5B64B /* SampleViewController.storyboard in Resources */,
@@ -250,16 +289,25 @@
 			files = (
 				B34863C527EDC83000C41B42 /* ReactiveWeatherViewModel.swift in Sources */,
 				B3D5259627D1AAF0002D7A4D /* WeatherResult.swift in Sources */,
+				B368603C27F6F5C90065AA70 /* CountryModel.swift in Sources */,
+				B368604227F6F7300065AA70 /* CountryAPI.swift in Sources */,
 				B3D5259927D1B112002D7A4D /* WeatherModelImpl.swift in Sources */,
+				B368604027F6F63B0065AA70 /* CountryModelImpl.swift in Sources */,
+				B30DEFE227FD5FD600AEA71A /* PrefectureSelectorSectionHeader.swift in Sources */,
 				B3AF310927BF99EE00A7C1DB /* WeatherViewController.swift in Sources */,
 				B3D525A927DAF4B9002D7A4D /* ReactiveViewController.swift in Sources */,
+				B368604527FD263F0065AA70 /* PrefectureSelectorViewController.swift in Sources */,
 				B3AF310527BF99EE00A7C1DB /* AppDelegate.swift in Sources */,
 				B3D525AD27DAFD5E002D7A4D /* ReactiveWeatherViewController.swift in Sources */,
 				B3D5259E27D1BEA3002D7A4D /* ViewController.swift in Sources */,
 				B3D5259427D1AA93002D7A4D /* WeatherParameter.swift in Sources */,
 				B34863C727EDC84200C41B42 /* ReactiveWeatherViewModelType.swift in Sources */,
 				B3D525A427D887C7002D7A4D /* WeatherModel.swift in Sources */,
+				B368603827F6F2C00065AA70 /* Region.swift in Sources */,
+				B3F6327427FD6B9600D840D6 /* PrefectureSelectorViewModelType.swift in Sources */,
+				B3B8457227FD9B8200A69CF9 /* PrefectureSelectorViewModel.swift in Sources */,
 				B3AF310727BF99EE00A7C1DB /* SceneDelegate.swift in Sources */,
+				B368603A27F6F5940065AA70 /* Country.swift in Sources */,
 				43BF2CE427DAD46900A5B64B /* SampleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

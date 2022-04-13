@@ -12,6 +12,7 @@ import UIKit
 protocol ReactiveWeatherViewModelInputs {
     var viewDidAppear: Signal<Void, Never>.Observer { get }
     var reloadButtonDidPress: Signal<Void, Never>.Observer { get }
+    var prefectureDidChange: Signal<String, Never>.Observer { get }
 }
 
 protocol ReactiveWeatherViewModelOutputs {
@@ -21,6 +22,7 @@ protocol ReactiveWeatherViewModelOutputs {
     var minTemp: Property<String?> { get }
     var showErrorAlert: Signal<String, Never> { get }
     var isActivityIndicatorViewAnimating: Property<Bool> { get }
+    var prefectureButtonTitle: Property<String> { get }
 }
 
 protocol ReactiveWeatherViewModelType {
