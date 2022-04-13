@@ -8,5 +8,9 @@
 import UIKit
 
 final class PrefectureSelectorSectionHeader: UICollectionReusableView {
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet private weak var label: UILabel!
+    
+    func changeLabelText(_ text: String?) {
+        self.label.text = text
+    }
 }

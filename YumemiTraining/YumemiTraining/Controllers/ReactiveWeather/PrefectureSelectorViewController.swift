@@ -74,7 +74,7 @@ extension PrefectureSelectorViewController: UICollectionViewDataSource {
             fatalError("Could not find proper header")
         }
         if kind == UICollectionView.elementKindSectionHeader {
-            header.label.text = self.country?.regions[indexPath.section].regionName
+            header.changeLabelText(self.country?.regions[indexPath.section].regionName)
             
             return header
         }
