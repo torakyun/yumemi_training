@@ -16,12 +16,7 @@ protocol PrefectureSelectorViewControllerDelegate: AnyObject {
 final class PrefectureSelectorViewController: UIViewController {
     private let viewModel: PrefectureSelectorViewModel
     
-    @IBOutlet private weak var collectionView: UICollectionView! {
-        didSet {
-            collectionView.delegate = self
-            collectionView.dataSource = self
-        }
-    }
+    @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var closeButton: UIButton!
     
     weak var delegate: PrefectureSelectorViewControllerDelegate?

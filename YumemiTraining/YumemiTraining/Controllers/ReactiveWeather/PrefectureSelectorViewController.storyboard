@@ -69,6 +69,10 @@
                                         <outlet property="label" destination="EJd-83-nUG" id="DA1-nK-FjO"/>
                                     </connections>
                                 </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="Txd-Ko-rGD"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="hvB-x7-xgr"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
